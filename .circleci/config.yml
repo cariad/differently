@@ -10,10 +10,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          - pipenv-{{ .Branch }}-
-          - pipenv-
+          keys:
+            - pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+            - pipenv-{{ .Branch }}-
+            - pipenv-
       - run: pipenv sync --dev
       - save_cache:
           key: pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
