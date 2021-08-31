@@ -1,5 +1,7 @@
 # differently
 
+[![codecov](https://codecov.io/gh/cariad/differently/branch/main/graph/badge.svg?token=2hx57vSnN9)](https://codecov.io/gh/cariad/differently) [![CircleCI](https://circleci.com/gh/cariad/differently/tree/main.svg?style=shield)](https://circleci.com/gh/cariad/differently/tree/main)
+
 `differently` is a CLI tool and Python package for visualising the differences between objects.
 
 ![](example.png)
