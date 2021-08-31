@@ -7,6 +7,7 @@ name = "pypi"
 colorama = "*"
 pyyaml = "*"
 yamllint = "*"
+twine = "*"
 
 [dev-packages]
 black = "==21.8b0"

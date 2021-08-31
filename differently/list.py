@@ -38,7 +38,6 @@ class ListDifferently:
         skip = 0
 
         for index, diff_line in enumerate(lines):
-            print(diff_line)
             if skip > 0:
                 skip -= 1
                 continue
