@@ -10,17 +10,17 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-         keys:
-           - pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-           - pipenv-{{ .Branch }}-
-           - pipenv-
+        keys:
+          - pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          - pipenv-{{ .Branch }}-
+          - pipenv-
       - run: pipenv sync --dev
       - save_cache:
           key: pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - .venv
       - run: pipenv run ./lint.sh
-      - run: pipenv run ./test.sh
+      - run: pipenv run pytest
       - run: pipenv run ./build.sh
       - run: if [[ "${CIRCLE_BRANCH}" != "main" ]]; then circleci-agent step halt fi
       - run: pipenv run twine upload dist/*
