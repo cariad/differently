@@ -11,12 +11,12 @@ jobs:
       - checkout
       - restore_cache:
          keys:
-           - pip-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-           - pip-{{ .Branch }}-
-           - pip-
-      - run: pipenv sync
+           - pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+           - pipenv-{{ .Branch }}-
+           - pipenv-
+      - run: pipenv sync --dev
       - save_cache:
-          key: pip-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: pipenv-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - .venv
       - run: pipenv run ./lint.sh
