@@ -21,6 +21,7 @@ jobs:
             - .venv
       - run: pipenv run ./lint.sh
       - run: pipenv run pytest
+      - codecov/upload
       - run: pipenv run ./build.sh
       - run: if [[ "${CIRCLE_BRANCH}" != "main" ]]; then circleci-agent step halt fi
       - run: pipenv run twine upload dist/*
