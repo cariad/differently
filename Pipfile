@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+colorama = "*"
+pyyaml = "*"
+yamllint = "*"
+
+[dev-packages]
+black = "==21.8b0"
+flake8 = "*"
+isort = "*"
+mypy = "==0.910"
+pytest = "*"
+pytest-cov = "*"
+shellcheck-py = "*"
+
+[requires]
+python_version = "3.9"
