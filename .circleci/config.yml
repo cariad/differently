@@ -33,4 +33,9 @@ jobs:
 workflows:
   default:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: /.*/
+            tags:
+              only: /.*/
