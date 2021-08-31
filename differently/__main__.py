@@ -4,7 +4,8 @@ from colorama import deinit, init
 
 from differently import TextDifferently
 
-if __name__ == "__main__":
+
+def cli_entry() -> None:
     parser = ArgumentParser(description="differently")
     parser.add_argument("file1", help="File 1")
     parser.add_argument("file2", help="File 2")
@@ -15,3 +16,7 @@ if __name__ == "__main__":
         with open(args.file2, "r") as file2:
             print(TextDifferently(file1.read(), file2.read()))
     deinit()
+
+
+if __name__ == "__main__":
+    cli_entry()
