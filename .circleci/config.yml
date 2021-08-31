@@ -27,7 +27,7 @@ jobs:
       - codecov/upload:
           file: coverage.xml
       - run: pipenv run ./build.sh
-      - run: if [[ "${CIRCLE_BRANCH}" != "main" ]]; then circleci-agent step halt; fi
+      - run: if [[ -z "${CIRCLE_TAG}" ]]; then circleci-agent step halt; fi
       - run: pipenv run twine upload dist/*
 
 workflows:
