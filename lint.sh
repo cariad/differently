@@ -1,7 +1,7 @@
 #!/bin/env bash
 set -euo pipefail
 
-find . -name "*.sh" -not -path "*/.venv/*" -exec shellcheck -o all --severity style -x {} +
+find . -name "*.sh" -not -path "*/.venv/*" -exec ./venv/bin/shellcheck -o all --severity style -x {} +
 
 yamllint --strict .
 
