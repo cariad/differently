@@ -18,6 +18,7 @@ mypy = "==0.910"
 pytest = "*"
 pytest-cov = "*"
 shellcheck-py = "*"
+types-pyyaml = "*"
 
 [requires]
 python_version = "3.9"
