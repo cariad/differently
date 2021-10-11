@@ -8,6 +8,7 @@ from differently.handlers import (
 )
 from differently.version import get_version
 
+
 def cli_entry() -> None:
     parser = ArgumentParser(description="Compares files and data.")
     parser.add_argument("file0", help="Source file", nargs="?")
@@ -26,11 +27,7 @@ def cli_entry() -> None:
         metavar=f"{{{','.join(get_renderer_keys())}}}",
     )
 
-    parser.add_argument(
-        "--version",
-        help="show version and exit",
-        action="store_true"
-    )
+    parser.add_argument("--version", help="show version and exit", action="store_true")
 
     args = parser.parse_args()
 
