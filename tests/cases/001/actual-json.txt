@@ -1,0 +1,8 @@
+[92m{[39m                            > [92m{[39m
+[92m  "movies": [[39m                > [92m  "movies": [[39m
+[91m ̶ ̶ ̶ ̶"̶F̶i̶r̶e̶ ̶E̶v̶e̶r̶y̶w̶h̶e̶r̶e̶"̶,̶[39m       [91m>[39m
+[93m    "The World Is Exploding"[39m [93m>[39m [93m    "The World Is Exploding",[39m
+                             > [93m    "Watch Out For The Moon"[39m
+[92m  ],[39m                         > [92m  ],[39m
+[93m  "name": "Bobby Pringles"[39m   [93m>[39m [93m  "name": "Susan Cheddar"[39m
+[92m}[39m                            > [92m}[39m

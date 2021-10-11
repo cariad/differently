@@ -1,0 +1,27 @@
+{
+  "dictionary": {
+    "username": "root",
+    "greeting": "Hello",
+    "flavour": "Cheese and Onion"
+  },
+  "array_of_strings": [
+    "This is the first line.",
+    "This is the second line.",
+    "This is the second-point-five line.",
+    "This is the third line."
+  ],
+  "array_of_dictionaries": [
+    {
+      "name": "Bobby Salami",
+      "occupation": "Fire Fighter"
+    },
+    {
+      "name": "Susan Cheddar",
+      "occupation": "Transporter Chief"
+    },
+    {
+      "name": "Jade Rat",
+      "occupation": "Lightning Chaser"
+    }
+  ]
+}

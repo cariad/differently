@@ -1,0 +1,15 @@
+dictionary:
+  greeting: Hello
+  username: operator
+  sound: Fire Truck
+array_of_strings:
+  - This is the first line.
+  - This is the second line.
+  - This is the third line.
+array_of_dictionaries:
+  - name: Bobby Pringles
+    occupation: Fire Starter
+  - name: Susan Cheddar
+    occupation: Transporter Chief
+  - name: Jade Rat
+    occupation: Lightning Conductor

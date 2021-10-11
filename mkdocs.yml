@@ -1,5 +1,6 @@
 nav:
   - index.md
+  - Classes: json_differently.md
 site_name: differently
 theme:
   name: readthedocs
