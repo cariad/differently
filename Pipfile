@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-ansiscape = "~=1.0.2"
+ansiscape = "~=1.1.0"
 pyyaml = "*"
 
 [dev-packages]

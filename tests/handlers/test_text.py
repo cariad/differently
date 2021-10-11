@@ -4,7 +4,11 @@ from differently.handlers import TextDifferently
 
 
 def test() -> None:
-    diff = TextDifferently("foo", "boo")
+    diff = TextDifferently(
+        "foo",
+        "boo",
+        color=True,
+    )
     expect = (
         "\x1b[38;5;11mfoo\x1b[39m  \x1b[38;5;11m~\x1b[39m  \x1b[38;5;11mboo\x1b[39m"
     )

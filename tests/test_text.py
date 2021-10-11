@@ -10,6 +10,6 @@ My name is Bobby Pringles!
 I like turtles."""
 
     assert (
-        str(TextDifferently(a, b))
+        str(TextDifferently(a, b, color=True))
         == """\x1b[38;5;11mHello world!\x1b[39m                \x1b[38;5;11m~\x1b[39m  \x1b[38;5;11mHello galaxy!\x1b[39m\n\x1b[38;5;10mMy name is Bobby Pringles!\x1b[39m  \x1b[38;5;10m=\x1b[39m  \x1b[38;5;10mMy name is Bobby Pringles!\x1b[39m\n                            \x1b[38;5;11m>\x1b[39m  \x1b[38;5;11mI like turtles.\x1b[39m"""
     )

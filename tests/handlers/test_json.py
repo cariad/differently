@@ -9,7 +9,11 @@ class FooDict(TypedDict):
 
 
 def test() -> None:
-    diff = JsonDifferently[FooDict]({"foo": "boo"}, {"foo": "woo"})
+    diff = JsonDifferently[FooDict](
+        {"foo": "boo"},
+        {"foo": "woo"},
+        color=True,
+    )
     assert (
         str(diff)
         == """\x1b[38;5;10m{\x1b[39m               \x1b[38;5;10m=\x1b[39m  \x1b[38;5;10m{\x1b[39m

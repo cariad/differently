@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 
 from differently.handlers.list import ListDifferently
 
@@ -6,8 +7,17 @@ from differently.handlers.list import ListDifferently
 class TextDifferently(ListDifferently):
     """Visualises differences between strings."""
 
-    def __init__(self, a: str, b: str) -> None:
-        super().__init__(a.splitlines(), b.splitlines())
+    def __init__(
+        self,
+        a: str,
+        b: str,
+        color: Optional[bool] = None,
+    ) -> None:
+        super().__init__(
+            a.splitlines(),
+            b.splitlines(),
+            color=color,
+        )
 
     @staticmethod
     def load(path: Path) -> str:

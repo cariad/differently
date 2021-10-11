@@ -10,14 +10,27 @@ from differently.renderers.table import TableRenderer
 @mark.parametrize(
     "change, expect",
     [
-        (ChangeType.delete, "\x1b[38;5;9mx\x1b[39m"),
-        (ChangeType.insert, "\x1b[38;5;11m>\x1b[39m"),
-        (ChangeType.replace, "\x1b[38;5;11m~\x1b[39m"),
-        (ChangeType.none, "\x1b[38;5;10m=\x1b[39m"),
+        (ChangeType.delete, "x"),
+        (ChangeType.insert, ">"),
+        (ChangeType.replace, "~"),
+        (ChangeType.none, "="),
     ],
 )
 def test_arrow(change: ChangeType, expect: str) -> None:
     assert TableRenderer.arrow(change) == expect
+
+
+@mark.parametrize(
+    "change, expect",
+    [
+        (ChangeType.delete, "\x1b[38;5;9m.\x1b[39m"),
+        (ChangeType.insert, "\x1b[38;5;11m.\x1b[39m"),
+        (ChangeType.replace, "\x1b[38;5;11m.\x1b[39m"),
+        (ChangeType.none, "\x1b[38;5;10m.\x1b[39m"),
+    ],
+)
+def test_format_arrow(change: ChangeType, expect: str) -> None:
+    assert TableRenderer.format_arrow(".", change) == expect
 
 
 @mark.parametrize(
@@ -35,11 +48,9 @@ def test_format_after(text: str, change: ChangeType, expect: str) -> None:
 
 
 def test_format_after__invalid() -> None:
-    with raises(ValueError) as ex:  # pyright: reportUnknownVariableType=false
+    with raises(ValueError) as ex:
         TableRenderer.format_after("foo", ChangeType.delete)
-    assert (
-        str(ex.value) == 'no format-after for change "ChangeType.delete" in "foo"'
-    )  # pyright: reportUnknownArgumentType=false, reportUnknownMemberType=false
+    assert str(ex.value) == 'no format-after for change "ChangeType.delete" in "foo"'
 
 
 @mark.parametrize(
@@ -57,11 +68,9 @@ def test_format_before(text: str, change: ChangeType, expect: str) -> None:
 
 
 def test_format_before__invalid() -> None:
-    with raises(ValueError) as ex:  # pyright: reportUnknownVariableType=false
+    with raises(ValueError) as ex:
         TableRenderer.format_before("foo", ChangeType.insert)
-    assert (
-        str(ex.value) == 'no format-before for change "ChangeType.insert"'
-    )  # pyright: reportUnknownArgumentType=false, reportUnknownMemberType=false
+    assert str(ex.value) == 'no format-before for change "ChangeType.insert"'
 
 
 @mark.parametrize(
@@ -75,4 +84,4 @@ def test_format_before__invalid() -> None:
     ],
 )
 def test_table(changes: List[Change], expect: str) -> None:
-    assert TableRenderer(changes).table == expect
+    assert TableRenderer(changes, color=True).table == expect

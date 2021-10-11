@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Generic, List, cast
+from typing import Generic, List, Optional, cast
 
 from yaml import safe_dump, safe_load
 
@@ -10,8 +10,17 @@ from differently.types import TComparable
 class YamlDifferently(ListDifferently, Generic[TComparable]):
     """Visualises differences as YAML."""
 
-    def __init__(self, a: TComparable, b: TComparable) -> None:
-        super().__init__(self.to_strings(a), self.to_strings(b))
+    def __init__(
+        self,
+        a: TComparable,
+        b: TComparable,
+        color: Optional[bool] = None,
+    ) -> None:
+        super().__init__(
+            self.to_strings(a),
+            self.to_strings(b),
+            color=color,
+        )
 
     @staticmethod
     def load(path: Path) -> TComparable:

@@ -1,14 +1,16 @@
 from typing import List, Optional
 
 from ansiscape import bright_green, bright_red, bright_yellow
+from ansiscape.checks import should_emit_codes
 
 from differently.change import Change
 from differently.change_type import ChangeType
 
 
 class TableRenderer:
-    def __init__(self, changes: List[Change]) -> None:
+    def __init__(self, changes: List[Change], color: Optional[bool] = None) -> None:
         self.changes = changes
+        self.color = should_emit_codes() if color is None else color
 
     @staticmethod
     def format_after(text: Optional[str], change: ChangeType) -> str:
@@ -33,14 +35,24 @@ class TableRenderer:
         raise ValueError(f'no format-before for change "{change}"')
 
     @staticmethod
+    def format_arrow(arrow: str, change: ChangeType) -> str:
+        if change == ChangeType.insert:
+            return bright_yellow(arrow).encoded
+        if change == ChangeType.replace:
+            return bright_yellow(arrow).encoded
+        if change == ChangeType.delete:
+            return bright_red(arrow).encoded
+        return bright_green(arrow).encoded
+
+    @staticmethod
     def arrow(change: ChangeType) -> str:
         if change == ChangeType.insert:
-            return bright_yellow(">").encoded
+            return ">"
         if change == ChangeType.replace:
-            return bright_yellow("~").encoded
+            return "~"
         if change == ChangeType.delete:
-            return bright_red("x").encoded
-        return bright_green("=").encoded
+            return "x"
+        return "="
 
     @property
     def table(self) -> str:
@@ -52,9 +64,21 @@ class TableRenderer:
 
         for change in self.changes:
             pad = " " * (longest_a - len(change.before or ""))
-            before = self.format_before(change.before, change.change_type)
-            after = self.format_after(change.after, change.change_type)
-            wip = f"{wip}{before}{pad}  {self.arrow(change.change_type)}  {after}"
+            before = (
+                self.format_before(change.before, change.change_type)
+                if self.color
+                else change.before
+            )
+            after = (
+                self.format_after(change.after, change.change_type)
+                if self.color
+                else change.after
+            )
+            arrow = self.arrow(change.change_type)
+            arrow_fmt = (
+                self.format_arrow(arrow, change.change_type) if self.color else arrow
+            )
+            wip = f"{wip}{before}{pad}  {arrow_fmt}  {after}"
             wip = f"{wip.strip()}\n"
 
         return wip.rstrip()

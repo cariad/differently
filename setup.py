@@ -45,7 +45,7 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "ansiscape>=1.0.2",
+        "ansiscape>=1.1.0",
         "pyyaml",
     ],
     license="MIT",
@@ -54,9 +54,15 @@ setup(
     name="differently",
     packages=[
         "differently",
+        "differently.handlers",
+        "differently.renderers",
+        "differently.version",
     ],
     package_data={
         "differently": ["py.typed"],
+        "differently.handlers": ["py.typed"],
+        "differently.renderers": ["py.typed"],
+        "differently.version": ["py.typed"],
     },
     python_requires=">=3.8",
     url="https://github.com/cariad/differently",

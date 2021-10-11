@@ -10,7 +10,7 @@ def test() -> None:
         a = JsonDifferently[Any].load(Path(directory) / "a.json")
         b = JsonDifferently[Any].load(Path(directory) / "b.json")
 
-        actual_json = str(JsonDifferently(a, b))
+        actual_json = str(JsonDifferently[Any](a, b, color=True))
         with open(Path(directory) / "actual-json.txt", "w") as f:
             f.write(actual_json)
 
