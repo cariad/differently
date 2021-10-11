@@ -16,9 +16,9 @@ def test() -> None:
     )
     assert (
         str(diff)
-        == """\x1b[38;5;10m{\x1b[39m               \x1b[38;5;10m=\x1b[39m  \x1b[38;5;10m{\x1b[39m
-\x1b[38;5;11m  "foo": "boo"\x1b[39m  \x1b[38;5;11m~\x1b[39m  \x1b[38;5;11m  "foo": "woo"\x1b[39m
-\x1b[38;5;10m}\x1b[39m               \x1b[38;5;10m=\x1b[39m  \x1b[38;5;10m}\x1b[39m"""
+        == """\x1b[32m{\x1b[39m               \x1b[32m=\x1b[39m  \x1b[32m{\x1b[39m
+\x1b[33m  "foo": "boo"\x1b[39m  \x1b[33m~\x1b[39m  \x1b[33m  "foo": "woo"\x1b[39m
+\x1b[32m}\x1b[39m               \x1b[32m=\x1b[39m  \x1b[32m}\x1b[39m"""
     )
 
 

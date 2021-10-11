@@ -5,8 +5,10 @@ from differently.handlers import (
     YamlDifferently,
 )
 from differently.version import get_version
+from differently.change_calculator import ChangeCalculator
 
 __all__ = [
+    "ChangeCalculator",
     "get_version",
     "JsonDifferently",
     "ListDifferently",

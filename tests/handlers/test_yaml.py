@@ -14,7 +14,7 @@ def test() -> None:
         {"foo": "woo"},
         color=True,
     )
-    expect = "\x1b[38;5;11mfoo: boo\x1b[39m  \x1b[38;5;11m~\x1b[39m  \x1b[38;5;11mfoo: woo\x1b[39m"
+    expect = "\x1b[33mfoo: boo\x1b[39m  \x1b[33m~\x1b[39m  \x1b[33mfoo: woo\x1b[39m"
     assert str(diff) == expect
 
 

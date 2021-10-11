@@ -14,6 +14,8 @@ def cli_entry() -> None:
     parser.add_argument("file0", help="Source file", nargs="?")
     parser.add_argument("file1", help="Comparing file", nargs="?")
 
+    parser.add_argument("--color", help="force colour", action="store_true")
+
     parser.add_argument(
         "--in-format",
         default="text",
@@ -48,6 +50,7 @@ def cli_entry() -> None:
     diff = renderer(
         deserialize(args.in_format, 0, args.file0),
         deserialize(args.in_format, 1, args.file1),
+        color=True if args.color else None,
     )
 
     print(diff)

@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from ansiscape import bright_green, bright_red, bright_yellow
+from ansiscape import green, red, yellow
 from ansiscape.checks import should_emit_codes
 
 from differently.change import Change
@@ -17,9 +17,9 @@ class TableRenderer:
         if not text:
             return ""
         if change in [ChangeType.insert, ChangeType.replace]:
-            return bright_yellow(text).encoded
+            return yellow(text).encoded
         if change == ChangeType.none:
-            return bright_green(text).encoded
+            return green(text).encoded
         raise ValueError(f'no format-after for change "{change}" in "{text}"')
 
     @staticmethod
@@ -27,22 +27,22 @@ class TableRenderer:
         if not text:
             return ""
         if change == ChangeType.delete:
-            return bright_red(text).encoded
+            return red(text).encoded
         if change == ChangeType.replace:
-            return bright_yellow(text).encoded
+            return yellow(text).encoded
         if change == ChangeType.none:
-            return bright_green(text).encoded
+            return green(text).encoded
         raise ValueError(f'no format-before for change "{change}"')
 
     @staticmethod
     def format_arrow(arrow: str, change: ChangeType) -> str:
         if change == ChangeType.insert:
-            return bright_yellow(arrow).encoded
+            return yellow(arrow).encoded
         if change == ChangeType.replace:
-            return bright_yellow(arrow).encoded
+            return yellow(arrow).encoded
         if change == ChangeType.delete:
-            return bright_red(arrow).encoded
-        return bright_green(arrow).encoded
+            return red(arrow).encoded
+        return green(arrow).encoded
 
     @staticmethod
     def arrow(change: ChangeType) -> str:
