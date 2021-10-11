@@ -67,12 +67,12 @@ class TableRenderer:
             before = (
                 self.format_before(change.before, change.change_type)
                 if self.color
-                else change.before
+                else (change.before or "")
             )
             after = (
                 self.format_after(change.after, change.change_type)
                 if self.color
-                else change.after
+                else (change.after or "")
             )
             arrow = self.arrow(change.change_type)
             arrow_fmt = (

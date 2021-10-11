@@ -7,7 +7,7 @@
 ![](example.png)
 
 ```bash
-python -m differently examples/1.json examples/2.yml --in-format json,yaml --out-format json
+differently examples/1.json examples/2.yml --in-format json,yaml --out-format json
 ```
 
 <!--dinject as=markdown host=shell range=start-->
