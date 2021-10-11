@@ -35,9 +35,9 @@ classifiers.sort()
 
 setup(
     author="Cariad Eccleston",
-    author_email="cariad@cariad.io",
+    author_email="cariad@cariad.earth",
     classifiers=classifiers,
-    description="differently",
+    description="Compares files and data",
     entry_points={
         "console_scripts": [
             "differently=differently.__main__:cli_entry",
@@ -45,7 +45,8 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "colorama",
+        "ansiscape>=1.0.2",
+        "pyyaml",
     ],
     license="MIT",
     long_description=long_description,

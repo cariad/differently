@@ -1,8 +1,4 @@
-import importlib.resources as pkg_resources
 from argparse import ArgumentParser
-
-from colorama import deinit, init
-from yaml import load
 
 from differently.handlers import (
     deserialize,
@@ -13,23 +9,20 @@ from differently.handlers import (
 
 
 def cli_entry() -> None:
-    with pkg_resources.open_text(__package__, "local.yml") as t:
-        local = load(t)
-
-    parser = ArgumentParser(description="differently")
+    parser = ArgumentParser(description="Compares files and data.")
     parser.add_argument("file0", help="Source file")
     parser.add_argument("file1", help="Comparing file")
 
     parser.add_argument(
         "--in-format",
         default="text",
-        help=local["in_format"],
+        help="input formats (comma-separate if files are different)",
         metavar=f"{{{','.join(get_deserializer_keys())}}}",
     )
 
     parser.add_argument(
         "--out-format",
-        help=local["out_format"],
+        help="output format",
         metavar=f"{{{','.join(get_renderer_keys())}}}",
     )
 
@@ -50,9 +43,7 @@ def cli_entry() -> None:
         deserialize(args.in_format, 1, args.file1),
     )
 
-    init()
     print(diff)
-    deinit()
 
 
 if __name__ == "__main__":

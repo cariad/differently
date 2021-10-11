@@ -4,8 +4,6 @@ from typing import Any
 
 from differently import JsonDifferently
 
-# from colorama import deinit, init
-
 
 def test() -> None:
     for directory in scandir(Path() / "tests" / "cases"):

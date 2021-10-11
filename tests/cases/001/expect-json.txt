@@ -1,8 +1,8 @@
-[92mx{x[39m                            > [92mx{x[39m
-[92mx  "movies": [x[39m                > [92mx  "movies": [x[39m
-[91mx̶ ̶ ̶ ̶ ̶"̶F̶i̶r̶e̶ ̶E̶v̶e̶r̶y̶w̶h̶e̶r̶e̶"̶,̶x̶[39m       [91m>[39m
-[93mx    "The World Is Exploding"x[39m [93m>[39m [93mx    "The World Is Exploding",x[39m
-                               > [93mx    "Watch Out For The Moon"x[39m
-[92mx  ],x[39m                         > [92mx  ],x[39m
-[93mx  "name": "Bobby Pringles"x[39m   [93m>[39m [93mx  "name": "Susan Cheddar"x[39m
-[92mx}x[39m                            > [92mx}x[39m
+[38;5;10m{[39m                             [38;5;10m=[39m  [38;5;10m{[39m
+[38;5;10m  "movies": [[39m                 [38;5;10m=[39m  [38;5;10m  "movies": [[39m
+[38;5;9m    "Fire Everywhere",[39m        [38;5;9mx[39m
+[38;5;11m    "The World Is Exploding"[39m  [38;5;11m~[39m  [38;5;11m    "The World Is Exploding",[39m
+                              [38;5;11m>[39m  [38;5;11m    "Watch Out For The Moon"[39m
+[38;5;10m  ],[39m                          [38;5;10m=[39m  [38;5;10m  ],[39m
+[38;5;11m  "name": "Bobby Pringles"[39m    [38;5;11m~[39m  [38;5;11m  "name": "Susan Cheddar"[39m
+[38;5;10m}[39m                             [38;5;10m=[39m  [38;5;10m}[39m

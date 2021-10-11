@@ -1,6 +1,5 @@
 from typing import Any
 
-# from colorama import Fore
 from pytest import mark
 
 from differently.change import Change

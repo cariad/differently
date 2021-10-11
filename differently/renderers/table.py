@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from colorama import Fore
+from ansiscape import bright_green, bright_red, bright_yellow
 
 from differently.change import Change
 from differently.change_type import ChangeType
@@ -11,17 +11,13 @@ class TableRenderer:
         self.changes = changes
 
     @staticmethod
-    def color(text: str, color: str) -> str:
-        return f"{color}{text}{Fore.RESET}"
-
-    @staticmethod
     def format_after(text: Optional[str], change: ChangeType) -> str:
         if not text:
             return ""
         if change in [ChangeType.insert, ChangeType.replace]:
-            return TableRenderer.color(text, Fore.LIGHTYELLOW_EX)
+            return bright_yellow(text).encoded
         if change == ChangeType.none:
-            return TableRenderer.color(text, Fore.LIGHTGREEN_EX)
+            return bright_green(text).encoded
         raise ValueError(f'no format-after for change "{change}" in "{text}"')
 
     @staticmethod
@@ -29,21 +25,22 @@ class TableRenderer:
         if not text:
             return ""
         if change == ChangeType.delete:
-            b = "".join([f"{c}\u0336" for c in text])
-            return TableRenderer.color(b, Fore.LIGHTRED_EX)
+            return bright_red(text).encoded
         if change == ChangeType.replace:
-            return TableRenderer.color(text, Fore.LIGHTYELLOW_EX)
+            return bright_yellow(text).encoded
         if change == ChangeType.none:
-            return TableRenderer.color(text, Fore.LIGHTGREEN_EX)
+            return bright_green(text).encoded
         raise ValueError(f'no format-before for change "{change}"')
 
     @staticmethod
     def arrow(change: ChangeType) -> str:
+        if change == ChangeType.insert:
+            return bright_yellow(">").encoded
         if change == ChangeType.replace:
-            return TableRenderer.color(">", Fore.LIGHTYELLOW_EX)
+            return bright_yellow("~").encoded
         if change == ChangeType.delete:
-            return TableRenderer.color(">", Fore.LIGHTRED_EX)
-        return ">"
+            return bright_red("x").encoded
+        return bright_green("=").encoded
 
     @property
     def table(self) -> str:
@@ -57,7 +54,7 @@ class TableRenderer:
             pad = " " * (longest_a - len(change.before or ""))
             before = self.format_before(change.before, change.change_type)
             after = self.format_after(change.after, change.change_type)
-            wip = f"{wip}{before}{pad} {self.arrow(change.change_type)} {after}"
+            wip = f"{wip}{before}{pad}  {self.arrow(change.change_type)}  {after}"
             wip = f"{wip.strip()}\n"
 
         return wip.rstrip()

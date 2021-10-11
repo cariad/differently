@@ -5,7 +5,9 @@ from differently.handlers import TextDifferently
 
 def test() -> None:
     diff = TextDifferently("foo", "boo")
-    expect = "\x1b[93mfoo\x1b[39m \x1b[93m>\x1b[39m \x1b[93mboo\x1b[39m"
+    expect = (
+        "\x1b[38;5;11mfoo\x1b[39m  \x1b[38;5;11m~\x1b[39m  \x1b[38;5;11mboo\x1b[39m"
+    )
     assert str(diff) == expect
 
 

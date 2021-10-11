@@ -6,6 +6,7 @@ from pytest import mark
 from differently.handlers import (
     JsonDifferently,
     ListDifferently,
+    TextDifferently,
     YamlDifferently,
     deserialize,
     get_deserializer_keys,
@@ -38,6 +39,7 @@ def test_get_loader_keys() -> None:
     "key, expect",
     [
         ("json", JsonDifferently),
+        ("text", TextDifferently),
         ("yaml", YamlDifferently),
     ],
 )
@@ -46,4 +48,4 @@ def test_get_renderer(key: str, expect: Type[ListDifferently]) -> None:
 
 
 def test_get_renderer_keys() -> None:
-    assert get_renderer_keys() == ["json", "yaml"]
+    assert get_renderer_keys() == ["json", "text", "yaml"]

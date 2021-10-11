@@ -4,21 +4,22 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-colorama = "*"
+ansiscape = "~=1.0.2"
 pyyaml = "*"
-yamllint = "*"
-twine = "*"
 
 [dev-packages]
 black = "==21.8b0"
+dinject = "~=1.0.4"
 flake8 = "*"
 isort = "*"
 mkdocs = "*"
-mypy = "==0.910"
+mypy = "*"
 pytest = "*"
 pytest-cov = "*"
 shellcheck-py = "*"
+twine = "*"
 types-pyyaml = "*"
+yamllint = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"

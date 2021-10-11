@@ -12,9 +12,9 @@ def test() -> None:
     diff = JsonDifferently[FooDict]({"foo": "boo"}, {"foo": "woo"})
     assert (
         str(diff)
-        == """\x1b[92m{\x1b[39m              > \x1b[92m{\x1b[39m
-\x1b[93m  "foo": "boo"\x1b[39m \x1b[93m>\x1b[39m \x1b[93m  "foo": "woo"\x1b[39m
-\x1b[92m}\x1b[39m              > \x1b[92m}\x1b[39m"""
+        == """\x1b[38;5;10m{\x1b[39m               \x1b[38;5;10m=\x1b[39m  \x1b[38;5;10m{\x1b[39m
+\x1b[38;5;11m  "foo": "boo"\x1b[39m  \x1b[38;5;11m~\x1b[39m  \x1b[38;5;11m  "foo": "woo"\x1b[39m
+\x1b[38;5;10m}\x1b[39m               \x1b[38;5;10m=\x1b[39m  \x1b[38;5;10m}\x1b[39m"""
     )
 
 

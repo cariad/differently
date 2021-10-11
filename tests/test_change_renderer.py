@@ -1,6 +1,5 @@
 from typing import List
 
-from colorama import Fore
 from pytest import mark, raises
 
 from differently.change import Change
@@ -11,10 +10,10 @@ from differently.renderers.table import TableRenderer
 @mark.parametrize(
     "change, expect",
     [
-        (ChangeType.delete, f"{Fore.LIGHTRED_EX}>{Fore.RESET}"),
-        (ChangeType.insert, ">"),
-        (ChangeType.replace, f"{Fore.LIGHTYELLOW_EX}>{Fore.RESET}"),
-        (ChangeType.none, ">"),
+        (ChangeType.delete, "\x1b[38;5;9mx\x1b[39m"),
+        (ChangeType.insert, "\x1b[38;5;11m>\x1b[39m"),
+        (ChangeType.replace, "\x1b[38;5;11m~\x1b[39m"),
+        (ChangeType.none, "\x1b[38;5;10m=\x1b[39m"),
     ],
 )
 def test_arrow(change: ChangeType, expect: str) -> None:
@@ -26,9 +25,9 @@ def test_arrow(change: ChangeType, expect: str) -> None:
     [
         (None, ChangeType.insert, ""),
         ("", ChangeType.insert, ""),
-        ("foo", ChangeType.insert, f"{Fore.LIGHTYELLOW_EX}foo{Fore.RESET}"),
-        ("foo", ChangeType.replace, f"{Fore.LIGHTYELLOW_EX}foo{Fore.RESET}"),
-        ("foo", ChangeType.none, f"{Fore.LIGHTGREEN_EX}foo{Fore.RESET}"),
+        ("foo", ChangeType.insert, "\x1b[38;5;11mfoo\x1b[39m"),
+        ("foo", ChangeType.replace, "\x1b[38;5;11mfoo\x1b[39m"),
+        ("foo", ChangeType.none, "\x1b[38;5;10mfoo\x1b[39m"),
     ],
 )
 def test_format_after(text: str, change: ChangeType, expect: str) -> None:
@@ -48,13 +47,9 @@ def test_format_after__invalid() -> None:
     [
         (None, ChangeType.delete, ""),
         ("", ChangeType.delete, ""),
-        (
-            "foo",
-            ChangeType.delete,
-            f"{Fore.LIGHTRED_EX}f\u0336o\u0336o\u0336{Fore.RESET}",
-        ),
-        ("foo", ChangeType.replace, f"{Fore.LIGHTYELLOW_EX}foo{Fore.RESET}"),
-        ("foo", ChangeType.none, f"{Fore.LIGHTGREEN_EX}foo{Fore.RESET}"),
+        ("foo", ChangeType.delete, "\x1b[38;5;9mfoo\x1b[39m"),
+        ("foo", ChangeType.replace, "\x1b[38;5;11mfoo\x1b[39m"),
+        ("foo", ChangeType.none, "\x1b[38;5;10mfoo\x1b[39m"),
     ],
 )
 def test_format_before(text: str, change: ChangeType, expect: str) -> None:
@@ -73,8 +68,10 @@ def test_format_before__invalid() -> None:
     "changes, expect",
     [
         ([], ""),
-        ([Change("foo", "foo")], "\x1b[92mfoo\x1b[39m > \x1b[92mfoo\x1b[39m"),
-        # ([Change("foo", "bar")], "\x1b[92mfoo\x1b[39m > \x1b[92mfoo\x1b[39m"),
+        (
+            [Change("foo", "foo")],
+            "\x1b[38;5;10mfoo\x1b[39m  \x1b[38;5;10m=\x1b[39m  \x1b[38;5;10mfoo\x1b[39m",
+        ),
     ],
 )
 def test_table(changes: List[Change], expect: str) -> None:
