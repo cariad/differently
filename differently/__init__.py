@@ -4,6 +4,7 @@ from differently.handlers import (
     ListDifferently,
     TextDifferently,
     YamlDifferently,
+    render,
 )
 from differently.version import get_version
 
@@ -12,6 +13,7 @@ __all__ = [
     "get_version",
     "JsonDifferently",
     "ListDifferently",
+    "render",
     "TextDifferently",
     "YamlDifferently",
 ]
