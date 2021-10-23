@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 ansiscape = "~=1.1.0"
 pyyaml = "*"
-differently = {path = "./dist/differently-_1._1._1-py3-none-any.whl"}
 
 [dev-packages]
 black = "==21.8b0"
