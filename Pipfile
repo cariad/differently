@@ -17,9 +17,11 @@ mypy = "*"
 pytest = "*"
 pytest-cov = "*"
 shellcheck-py = "*"
+sphinx = "*"
 twine = "*"
 types-pyyaml = "*"
 yamllint = "*"
+furo = "*"
 
 [requires]
 python_version = "3.10"

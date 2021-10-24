@@ -2,7 +2,7 @@ from pathlib import Path
 
 from setuptools import setup  # pyright: reportMissingTypeStubs=false
 
-from differently import get_version
+from differently.version import get_version
 
 readme_path = Path(__file__).parent / "README.md"
 

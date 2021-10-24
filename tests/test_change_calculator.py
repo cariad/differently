@@ -97,5 +97,5 @@ def test_change_type__invalid() -> None:
     c = ChangeCalculator([], [])
     setattr(c, "diff", ["🤡 foo"])
     with raises(ValueError) as ex:
-        c.change_type(0)
+        c._get_change_type_at(0)
     assert str(ex.value) == 'unrecognised change type "🤡" in "🤡 foo"'

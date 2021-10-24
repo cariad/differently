@@ -1,8 +1,15 @@
 {
   "cSpell.words": [
+    "autoclass",
+    "blorst",
+    "currentmodule",
     "deserialisation",
     "dinject",
+    "furo",
+    "maxdepth",
     "pyyaml",
-    "scandir"
-  ]
+    "scandir",
+    "toctree"
+  ],
+  "restructuredtext.confPath": "${workspaceFolder}/docs/source"
 }

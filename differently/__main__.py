@@ -50,7 +50,7 @@ def cli_entry() -> None:
     diff = renderer(
         deserialize(args.in_format, 0, args.file0),
         deserialize(args.in_format, 1, args.file1),
-        color=True if args.color else None,
+        color=args.color,
     )
 
     print(diff)
