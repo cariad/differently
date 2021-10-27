@@ -2,7 +2,7 @@ from typing import Any
 
 from pytest import mark
 
-from differently import ChangeType, StringDifferently
+from differently import DifferenceType, StringDifferently
 
 
 @mark.parametrize(
@@ -19,17 +19,17 @@ def test_eq(a: StringDifferently, b: Any, expect: bool) -> None:
 
 
 def test_repr() -> None:
-    assert repr(StringDifferently("foo", "bar")) == "foo > bar"
+    assert repr(StringDifferently("foo", "bar")) == "\x1b[33mfoo\x1b[39m  \x1b[33m~\x1b[39m  \x1b[33mbar\x1b[39m"
 
 
 @mark.parametrize(
     "change, expect",
     [
-        (StringDifferently("foo", "foo"), ChangeType.none),
-        (StringDifferently("foo", None), ChangeType.delete),
-        (StringDifferently(None, "foo"), ChangeType.insert),
-        (StringDifferently("foo", "bar"), ChangeType.replace),
+        (StringDifferently("foo", "foo"), DifferenceType.NONE),
+        (StringDifferently("foo", None), DifferenceType.DELETION),
+        (StringDifferently(None, "foo"), DifferenceType.INSERTION),
+        (StringDifferently("foo", "bar"), DifferenceType.REPLACEMENT),
     ],
 )
-def test_change_type(change: StringDifferently, expect: ChangeType) -> None:
-    assert change.change == expect
+def test_change_type(change: StringDifferently, expect: DifferenceType) -> None:
+    assert change.type == expect

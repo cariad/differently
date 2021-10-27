@@ -1,7 +1,6 @@
 {
   "cSpell.words": [
     "autoclass",
-    "blorst",
     "currentmodule",
     "deserialisation",
     "dinject",
@@ -11,5 +10,9 @@
     "scandir",
     "toctree"
   ],
-  "restructuredtext.confPath": "${workspaceFolder}/docs/source"
+  "restructuredtext.confPath": "${workspaceFolder}/docsrc/source",
+  "cSpell.ignoreWords": [
+    "borst",
+    "seccond"
+  ]
 }

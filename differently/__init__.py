@@ -60,7 +60,7 @@
 
 
 # from differently.version import get_version
-from differently.change_type import ChangeType
+from differently.change_type import DifferenceType
 
 # from differently.change_calculator import ChangeCalculator
 from differently.handlers import (
@@ -70,7 +70,7 @@ from differently.handlers import (
     YamlDifferently,
     render,
 )
-from differently.string import StringDifferently
+from differently.string_differently import StringDifferently
 
 # from differently.change import Change
 # from differently import handlers
@@ -78,7 +78,7 @@ from differently.string import StringDifferently
 __all__ = [
     #     "Change",
     #     "ChangeCalculator",
-    "ChangeType",
+    "DifferenceType",
     #     "get_version",
     "JsonDifferently",
     "ListDifferently",

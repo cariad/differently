@@ -1,16 +1,9 @@
-"""foo"""
-
-from enum import Enum
+from enum import Enum, auto, unique
 
 
-class ChangeType(Enum):
-    """
-    Change type.
-    """
-
-    none = "none"
-    """No change."""
-
-    insert = "insert"
-    delete = "delete"
-    replace = "replace"
+@unique
+class DifferenceType(Enum):
+    NONE = auto()
+    INSERTION = auto()
+    DELETION = auto()
+    REPLACEMENT = auto()

@@ -2,19 +2,20 @@ from difflib import Differ
 from io import StringIO
 from typing import IO, List, Optional
 
-from differently.change_type import ChangeType
-from differently.string import StringDifferently
-
+from differently.change_type import DifferenceType
+from differently.string_differently import StringDifferently
+from logging import getLogger
 
 class ListDifferently:
     """
     Visualises the differences between two lists of strings.
 
+    Call `str(...)` or :meth:`.render` to render.
+
     Arguments:
         a:     First list
         b:     Second list
-        color: Include (`True`) or exclude (`False`) colour formatting
-               (default is `True`)
+        color: Include or exclude colour formatting (default is `True`)
 
     Example:
         .. testcode::
@@ -22,11 +23,11 @@ class ListDifferently:
             from differently import ListDifferently
 
             diff = ListDifferently(
-                a=[
+                [
                     "It was the best of times,",
                     "It was the blorst of times.",
                 ],
-                b=[
+                [
                     "It was the best of times,",
                     "It was the worst of times.",
                     "It was the age of wisdom...",
@@ -53,24 +54,18 @@ class ListDifferently:
         self.a = a
         self.b = b
         self.color = color
-        self._diff: List[str] = []
         self._changes: List[StringDifferently] = []
+        self._diff: List[str] = []
 
     def __repr__(self) -> str:
         o = StringIO()
         self.render(o)
         return o.getvalue()
 
-    def render(self, writer: IO[str]) -> None:
-        if not self.changes:
-            return
+    def _append(self, a: Optional[str], b: Optional[str]) -> None:
+        self._changes.append(StringDifferently(a, b, color=self.color))
 
-        longest_a = max([len(ch.before or "") for ch in self.changes])
-
-        for change in self.changes:
-            change.render(lhs_width=longest_a, writer=writer)
-
-    def _get_change_type_at(self, index: int) -> Optional[ChangeType]:
+    def _get_change_type_at(self, index: int) -> Optional[DifferenceType]:
         try:
             line = self._diff[index]
         except IndexError:
@@ -79,13 +74,13 @@ class ListDifferently:
             return None
 
         if line[0] == " ":
-            return ChangeType.none
+            return DifferenceType.NONE
         if line[0] == "+":
-            return ChangeType.insert
+            return DifferenceType.INSERTION
         if line[0] == "-":
-            return ChangeType.delete
+            return DifferenceType.DELETION
         if line[0] == "?":
-            return ChangeType.replace
+            return DifferenceType.REPLACEMENT
         raise ValueError(f'unrecognised change type "{line[0]}" in "{line}"')
 
     def _get_text_at(self, index: int) -> Optional[str]:
@@ -96,53 +91,55 @@ class ListDifferently:
             # so it's okay to fail silently.
             return None
 
-    def _append(self, a: Optional[str], b: Optional[str]) -> None:
-        self._changes.append(StringDifferently(a, b, color=self.color))
-
     @property
-    def changes(self) -> List[StringDifferently]:
-        # """
-        # Gets the changes.
+    def differences(self) -> List[StringDifferently]:
+        """
+        Gets the :class:`.StringDifferently` that make up the differences
+        between the lists.
 
-        # For example:
+        Example:
+            .. testcode::
 
-        # from differently.calculation import Calculator
+                from differently import ListDifferently
 
-        # calc = Calculator(
-        #     [
-        #         "It was the best of times, it was the blorst of times.",
-        #     ],
-        #     [
-        #         "It was the best of times, it was the worst of times.",
-        #         "It was the age of wisdom, it was the age of foolishness",
-        #     ],
-        # )
+                diff = ListDifferently(
+                    ["first", "seccond"],
+                    ["first", "second", "third"],
+                    color=False,
+                )
 
-        # for line, change in enumerate(calc.changes):
-        #     print(f"line {line}: before={change.before or ''}")
-        #     print(f"line {line}: after={change.after or ''}")
-        #     print(f"line {line}: type={change.type}")
+                for index, change in enumerate(diff.differences):
+                    print(index, change)
 
-        # line 0: before=It was the best of times, it was the blorst of times.
-        # line 0: after=It was the best of times, it was the worst of times.
-        # line 0: type=ChangeType.replace
-        # line 1: before=
-        # line 1: after=It was the age of wisdom, it was the age of foolishness
-        # line 1: type=ChangeType.insert
-        # """
 
-        if self._changes is None:
+        .. testoutput::
+            :options: +NORMALIZE_WHITESPACE
+
+            0 first  =  first
+            1 seccond  ~  second
+            2   >  third
+        """
+
+        if not self._changes:
+            log = getLogger("differently.ListDifferently")
+            log.debug("Calculating differences")
+
             self._diff = list(Differ().compare(self.a, self.b))
+
+            log.debug("Differ: %s", self._diff)
+
             skip = 0
 
             for index in range(len(self._diff)):
                 if skip > 0:
+                    log.debug("Skipping line %s", index)
                     skip -= 1
                     continue
 
                 this_action = self._get_change_type_at(index)
 
-                if this_action == ChangeType.replace:
+                if this_action == DifferenceType.REPLACEMENT:
+                    log.debug("Skipping instruction to replace")
                     continue
 
                 this_text = self._get_text_at(index)
@@ -150,27 +147,28 @@ class ListDifferently:
                 next_action = self._get_change_type_at(index + 1)
                 next_text = self._get_text_at(index + 1)
 
-                if this_action == ChangeType.delete:
+                if this_action == DifferenceType.DELETION:
+                    log.debug("This is a deletion")
 
                     jump_action = self._get_change_type_at(index + 2)
                     jump_text = self._get_text_at(index + 2)
 
                     # If the next line is an addition then consider this a change:
-                    if next_action == ChangeType.insert:
+                    if next_action == DifferenceType.INSERTION:
                         self._append(this_text, next_text)
                         skip = 1
                     elif (
-                        next_action == ChangeType.replace
-                        and jump_action == ChangeType.insert
+                        next_action == DifferenceType.REPLACEMENT
+                        and jump_action == DifferenceType.INSERTION
                     ):
                         self._append(this_text, jump_text)
-                        skip = 3
+                        skip = 2
                     else:
                         self._append(this_text, None)
 
-                elif this_action == ChangeType.insert:
+                elif this_action == DifferenceType.INSERTION:
                     # If the next line is a deletion then consider this a change:
-                    if next_action == ChangeType.delete:
+                    if next_action == DifferenceType.DELETION:
                         self._append(next_text, this_text)
                         skip = 1
                     else:
@@ -180,3 +178,43 @@ class ListDifferently:
                     self._append(this_text, this_text)
 
         return self._changes
+
+    def render(self, writer: IO[str]) -> None:
+        """
+        Renders the visualisation to `writer`.
+
+        Arguments:
+            writer: Writer
+
+        Example:
+            .. testcode::
+
+                from io import StringIO
+                from differently import ListDifferently
+
+                diff = ListDifferently(
+                    ["first", "seccond"],
+                    ["first", "second", "third"],
+                    color=False,
+                )
+
+                writer = StringIO()
+                diff.render(writer)
+                print(writer.getvalue())
+
+        .. testoutput::
+            :options: +NORMALIZE_WHITESPACE
+
+            first    =  first
+            seccond  ~  second
+                    >  third
+        """
+
+        if not self.differences:
+            return
+
+        longest_a = max([len(ch.a or "") for ch in self.differences])
+
+        for change in self.differences:
+            change.render(lhs_width=longest_a, writer=writer)
+            writer.write("\n")
