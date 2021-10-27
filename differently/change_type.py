@@ -1,8 +1,9 @@
-from enum import Enum
+from enum import Enum, auto, unique
 
 
-class ChangeType(Enum):
-    none = "none"
-    insert = "insert"
-    delete = "delete"
-    replace = "replace"
+@unique
+class DifferenceType(Enum):
+    NONE = auto()
+    INSERTION = auto()
+    DELETION = auto()
+    REPLACEMENT = auto()

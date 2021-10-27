@@ -9,7 +9,7 @@ jobs:
       - image: cimg/python:3.10.0
     environment:
       PIPENV_VENV_IN_PROJECT: true
-    resource_class: small
+    resource_class: medium
     steps:
       - checkout
       - restore_cache:
@@ -23,7 +23,7 @@ jobs:
           paths:
             - .venv
       - run: pipenv run ./lint.sh
-      - run: pipenv run ./test.sh
+      - run: pipenv run pytest
       - codecov/upload:
           file: coverage.xml
       - run: pipenv run ./build.sh

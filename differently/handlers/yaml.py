@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Generic, List, Optional, Union, cast
+from typing import Generic, List, Union, cast
 
 from yaml import safe_dump, safe_load
 
@@ -9,13 +9,47 @@ from differently.types import TComparable
 
 
 class YamlDifferently(ListDifferently, Generic[TComparable]):
-    """Visualises differences as YAML."""
+    """
+     `YamlDifferently` visualises the differences between dictionaries as YAML.
+
+    ```python
+    from differently import YamlDifferently
+    from typing import List, TypedDict
+
+    class PersonDict(TypedDict):
+        name: str
+        movies: List[str]
+
+    a: PersonDict = {
+    "name": "Danny Jam",
+    "movies": ["Oh, What a Lovely Implosion!", "Touch It and Die", "Mice! Mice! Mice!"],
+    }
+
+    b: PersonDict = {
+    "name": "Sandy Jelly",
+    "movies": ["Oh, What a Lovely Explosion!", "Mice! Mice! Mice!"],
+    }
+
+    diff = YamlDifferently(a, b)
+
+    print(diff)
+    ```
+
+    ```text
+    movies:                         =  movies:
+    - Oh, What a Lovely Implosion!  ~  - Oh, What a Lovely Explosion!
+    - Touch It and Die              x
+    - Mice! Mice! Mice!             =  - Mice! Mice! Mice!
+    name: Danny Jam                 ~  name: Sandy Jelly
+    ```
+
+    Visualises differences as YAML."""
 
     def __init__(
         self,
         a: TComparable,
         b: TComparable,
-        color: Optional[bool] = None,
+        color: bool = True,
     ) -> None:
         super().__init__(
             self.to_strings(a),

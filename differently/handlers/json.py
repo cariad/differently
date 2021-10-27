@@ -1,6 +1,6 @@
 from json import dumps, load, loads
 from pathlib import Path
-from typing import Generic, List, Optional, Union, cast
+from typing import Generic, List, Union, cast
 
 from differently.exceptions import DeserializationError
 from differently.handlers.list import ListDifferently
@@ -8,13 +8,51 @@ from differently.types import TComparable
 
 
 class JsonDifferently(ListDifferently, Generic[TComparable]):
-    """Visualises differences as JSON."""
+    """
+     `JsonDifferently` visualises the differences between dictionaries as JSON.
+
+    ```python
+    from differently import JsonDifferently
+    from typing import List, TypedDict
+
+    class PersonDict(TypedDict):
+        name: str
+        movies: List[str]
+
+    a: PersonDict = {
+    "name": "Bobby Pringles",
+    "movies": ["Fire Everywhere", "The World Is Exploding"],
+    }
+
+    b: PersonDict = {
+    "name": "Susan Cheddar",
+    "movies": ["The World Is Exploding", "Watch Out For The Moon"],
+    }
+
+    diff = JsonDifferently(a, b)
+
+    print(diff)
+    ```
+
+    ```text
+    {                             =  {
+    "movies": [                 =    "movies": [
+        "Fire Everywhere",        x
+        "The World Is Exploding"  ~      "The World Is Exploding",
+                                >      "Watch Out For The Moon"
+    ],                          =    ],
+    "name": "Bobby Pringles"    ~    "name": "Susan Cheddar"
+    }                             =  }
+    ```
+
+
+    Visualises differences as JSON."""
 
     def __init__(
         self,
         a: TComparable,
         b: TComparable,
-        color: Optional[bool] = None,
+        color: bool = True,
     ) -> None:
         super().__init__(
             self.to_strings(a),

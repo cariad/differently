@@ -1,3 +1,5 @@
+""" Handlers. """
+
 from pathlib import Path
 from typing import IO, Any, Callable, Dict, List, Tuple, Type
 
