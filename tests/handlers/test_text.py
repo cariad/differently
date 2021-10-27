@@ -2,7 +2,6 @@ from pathlib import Path
 
 from differently.handlers import TextDifferently
 
-
 # def test() -> None:
 #     diff = TextDifferently(
 #         "foo",

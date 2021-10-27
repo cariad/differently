@@ -1,10 +1,11 @@
 from difflib import Differ
 from io import StringIO
+from logging import getLogger
 from typing import IO, List, Optional
 
 from differently.change_type import DifferenceType
 from differently.string_differently import StringDifferently
-from logging import getLogger
+
 
 class ListDifferently:
     """

@@ -19,7 +19,10 @@ def test_eq(a: StringDifferently, b: Any, expect: bool) -> None:
 
 
 def test_repr() -> None:
-    assert repr(StringDifferently("foo", "bar")) == "\x1b[33mfoo\x1b[39m  \x1b[33m~\x1b[39m  \x1b[33mbar\x1b[39m"
+    assert (
+        repr(StringDifferently("foo", "bar"))
+        == "\x1b[33mfoo\x1b[39m  \x1b[33m~\x1b[39m  \x1b[33mbar\x1b[39m"
+    )
 
 
 @mark.parametrize(

@@ -9,7 +9,7 @@ jobs:
       - image: cimg/python:3.10.0
     environment:
       PIPENV_VENV_IN_PROJECT: true
-    resource_class: small
+    resource_class: medium
     steps:
       - checkout
       - restore_cache:

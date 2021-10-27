@@ -1,9 +1,9 @@
+from logging import DEBUG, basicConfig
 from typing import List
 
 from pytest import mark
 
 from differently import ListDifferently, StringDifferently
-from logging import basicConfig, DEBUG
 
 # from typing import List
 
@@ -176,27 +176,27 @@ from logging import basicConfig, DEBUG
             [StringDifferently("first 1", "first 2")],
         ),
         (
-                [
-                    "first",
-                    "seccond",
-                ],
-                [
-                    "first",
-                    "second",
-                    "third",
-                ],
+            [
+                "first",
+                "seccond",
+            ],
+            [
+                "first",
+                "second",
+                "third",
+            ],
             [
                 StringDifferently("first", "first"),
                 StringDifferently("seccond", "second"),
                 StringDifferently(None, "third"),
             ],
-        )
-
-
+        ),
     ],
 )
 def test_differences(
-    a: List[str], b: List[str], expect: List[StringDifferently],
+    a: List[str],
+    b: List[str],
+    expect: List[StringDifferently],
 ) -> None:
     basicConfig(level=DEBUG, force=True)
     assert ListDifferently(a, b).differences == expect

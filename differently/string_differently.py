@@ -202,7 +202,6 @@ class StringDifferently:
 
         writer.write(self.b)
 
-
     def render(self, lhs_width: int, writer: IO[str]) -> None:
         """
         Renders the visualisation to `writer`.
@@ -261,7 +260,6 @@ class StringDifferently:
                 DifferenceType.INSERTION
                 DifferenceType.DELETION
         """
-
 
         if self.a == self.b:
             return DifferenceType.NONE
