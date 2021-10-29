@@ -23,9 +23,6 @@ project = "differently"
 copyright = "2021, Cariad Eccleston"
 author = "Cariad Eccleston"
 
-with open("../../differently/version/VERSION", "r") as f:
-    release = f.read()
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -38,8 +35,9 @@ extensions = [
     "sphinx.ext.napoleon",
 ]
 
-autosummary_generate = True
-napoleon_use_param = False
+autodoc_default_flags = ["members", "inherited-members"]
+# autosummary_generate = True
+# napoleon_use_param = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

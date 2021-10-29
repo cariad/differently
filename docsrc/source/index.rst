@@ -1,8 +1,3 @@
-.. differently documentation master file, created by
-   sphinx-quickstart on Sun Oct 24 12:12:01 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 differently
 ===========
 
@@ -23,6 +18,23 @@ Installation
 .. code-block:: console
 
    $ pip install differently
+
+
+
+
+# ## Feedback
+
+# Please raise bugs, request features and ask questions at [github.com/cariad/differently/issues](https://github.com/cariad/differently/issues).
+
+# Mention if you're a [sponsor](https://github.com/sponsors/cariad) to ensure I respond as a priority. Thank you!
+
+# ## Project
+
+# The source for `differently` is available at [github.com/cariad/differently](https://github.com/cariad/differently) under the MIT licence.
+
+# And, **hello!** I'm [Cariad Eccleston](https://cariad.io) and I'm an independent/freelance software engineer. If my work has value to you, please consider [sponsoring](https://github.com/sponsors/cariad/).
+
+
 
 Indices and tables
 ==================
