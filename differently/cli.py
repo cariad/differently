@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
-from sys import argv, stdout
 from typing import IO, List
+
+from ansiscape.checks import should_emit_codes
 
 from differently import (
     deserialize,
@@ -10,7 +11,6 @@ from differently import (
 )
 from differently.version import get_version
 
-from ansiscape.checks import should_emit_codes
 
 def entry(cli_args: List[str], writer: IO[str]) -> int:
     parser = ArgumentParser(description="Compares files and data.")

@@ -28,7 +28,8 @@ the diff because it's not in 2.md.                     =  the diff because it's 
 And finally, this next line doesn't exist in 1.md but  =  And finally, this next line doesn't exist in 1.md but
 should be added in the diff because it's in 2.md:      =  should be added in the diff because it's in 2.md:
                                                        >
-                                                       >  Hello from 2.md."""
+                                                       >  Hello from 2.md.
+"""
     )
 
 
@@ -77,7 +78,8 @@ def test__json_vs_yaml_as_json() -> None:
     "sound": "Fire Truck",                 x
     "username": "operator"                 ~      "username": "root"
   }                                        =    }
-}                                          =  }"""
+}                                          =  }
+"""
     )
 
 
