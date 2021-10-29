@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="deserialization" href="deserialization.html" /><link rel="prev" title="CLI Usage" href="../cli.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="deserialization" href="deserialization.html" /><link rel="prev" title="CLI usage" href="../cli.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
         <title>Python usage - differently documentation</title>
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -156,7 +156,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../cli.html">CLI Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">CLI usage</a></li>
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Python usage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="deserialization.html"><cite>deserialization</cite></a></li>
 <li class="toctree-l2"><a class="reference internal" href="string_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
@@ -186,7 +186,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -194,6 +194,21 @@
         <article role="main">
           <section id="python-usage">
 <h1>Python usage<a class="headerlink" href="#python-usage" title="Permalink to this headline">¶</a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<p><strong>differently</strong> supports difference visualisations through a library of classes:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="string_differently.html#differently.StringDifferently" title="differently.StringDifferently"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a> visualises the differences between strings</p></li>
+<li><p><a class="reference internal" href="text_differently.html#differently.TextDifferently" title="differently.TextDifferently"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></a> visualises the differences between multi-line text bodies</p></li>
+<li><p><a class="reference internal" href="list_differently.html#differently.ListDifferently" title="differently.ListDifferently"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code></a> visualises the differences between lists of strings</p></li>
+<li><p><a class="reference internal" href="json_differently.html#differently.JsonDifferently" title="differently.JsonDifferently"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code></a> visualises the differences between objects as JSON</p></li>
+<li><p><a class="reference internal" href="yaml_differently.html#differently.YamlDifferently" title="differently.YamlDifferently"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></a> visualises the differences between objects as YAML</p></li>
+</ul>
+</section>
+<section id="rendering">
+<h2>Rendering<a class="headerlink" href="#rendering" title="Permalink to this headline">¶</a></h2>
+<p>A difference can be visualised by casting any class instance to a string (i.e. <code class="docutils literal notranslate"><span class="pre">str(...)</span></code>).</p>
+<p>If you want to avoid string manipulation, you can render directly to any string IO stream via each class’s <code class="docutils literal notranslate"><span class="pre">.render()</span></code> function.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -205,6 +220,7 @@
 <li class="toctree-l1"><a class="reference internal" href="yaml_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></a></li>
 </ul>
 </div>
+</section>
 </section>
 
         </article>
@@ -228,7 +244,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">CLI Usage</div>
+                <div class="title">CLI usage</div>
                 
               </div>
             </a>
@@ -248,8 +264,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Python usage</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#rendering">Rendering</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

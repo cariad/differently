@@ -10,8 +10,9 @@ from differently import (
 )
 from differently.version import get_version
 
+from ansiscape.checks import should_emit_codes
 
-def entry(cli_args: List[str] = argv, writer: IO[str] = stdout) -> int:
+def entry(cli_args: List[str], writer: IO[str]) -> int:
     parser = ArgumentParser(description="Compares files and data.")
     parser.add_argument("file0", help="Source file", nargs="?")
     parser.add_argument("file1", help="Comparing file", nargs="?")
@@ -52,8 +53,9 @@ def entry(cli_args: List[str] = argv, writer: IO[str] = stdout) -> int:
     diff = renderer(
         deserialize(args.in_format, 0, args.file0),
         deserialize(args.in_format, 1, args.file1),
-        color=args.color,
+        color=True if args.color else should_emit_codes(),
     )
 
     diff.render(writer)
+    writer.write("\n")
     return 0

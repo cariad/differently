@@ -4,7 +4,7 @@ from differently.cli import entry
 
 
 def cli_entry() -> None:
-    exit(entry(cli_args=argv, writer=stdout))
+    exit(entry(cli_args=argv[1:], writer=stdout))
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="CLI Usage" href="cli.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="CLI usage" href="cli.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
         <title>differently documentation</title>
@@ -156,7 +156,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI usage</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">Python usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/deserialization.html"><cite>deserialization</cite></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/string_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
@@ -198,14 +198,28 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#plain-text-comparison">Plain text comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#data-comparison">Data comparison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#comparing-the-same-type">Comparing the same type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#comparing-the-same-type-but-visualising-as-another">Comparing the same type but visualising as another</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#comparing-across-types">Comparing across types</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">Python usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/deserialization.html"><cite>deserialization</cite></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/string_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/list_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/text_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/json_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/yaml_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#rendering">Rendering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/deserialization.html"><cite>deserialization</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/string_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/list_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/text_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/json_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/yaml_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -216,12 +230,16 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install differently
 </pre></div>
 </div>
-<p># ## Feedback</p>
-<p># Please raise bugs, request features and ask questions at [github.com/cariad/differently/issues](<a class="reference external" href="https://github.com/cariad/differently/issues">https://github.com/cariad/differently/issues</a>).</p>
-<p># Mention if you’re a [sponsor](<a class="reference external" href="https://github.com/sponsors/cariad">https://github.com/sponsors/cariad</a>) to ensure I respond as a priority. Thank you!</p>
-<p># ## Project</p>
-<p># The source for <cite>differently</cite> is available at [github.com/cariad/differently](<a class="reference external" href="https://github.com/cariad/differently">https://github.com/cariad/differently</a>) under the MIT licence.</p>
-<p># And, <strong>hello!</strong> I’m [Cariad Eccleston](<a class="reference external" href="https://cariad.io">https://cariad.io</a>) and I’m an independent/freelance software engineer. If my work has value to you, please consider [sponsoring](<a class="reference external" href="https://github.com/sponsors/cariad/">https://github.com/sponsors/cariad/</a>).</p>
+</section>
+<section id="feedback">
+<h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
+<p>Please raise bugs, request features and ask questions at <a class="reference external" href="https://github.com/cariad/differently/issues">github.com/cariad/differently/issues</a>.</p>
+<p>Mention if you’re a <a class="reference external" href="https://github.com/sponsors/cariad">sponsor</a> and I’ll respond as a priority. Thank you!</p>
+</section>
+<section id="project">
+<h2>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>
+<p>The source for <em>8differently*</em> is available at <a class="reference external" href="https://github.com/cariad/differently">github.com/cariad/differently</a> under the MIT licence.</p>
+<p>And, <strong>hello!</strong> I’m <a class="reference external" href="https://github.com/sponsors/cariad">Cariad Eccleston &lt;https://cariad.io&gt;`_and I’m an independent/freelance software engineer. If my work has value to you, please consider `sponsoring</a> me.</p>
 </section>
 </section>
 <section id="indices-and-tables">
@@ -243,7 +261,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">CLI Usage</div>
+                <div class="title">CLI usage</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -278,6 +296,8 @@
             <ul>
 <li><a class="reference internal" href="#">differently</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#feedback">Feedback</a></li>
+<li><a class="reference internal" href="#project">Project</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>

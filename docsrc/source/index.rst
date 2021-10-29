@@ -19,22 +19,19 @@ Installation
 
    $ pip install differently
 
+Feedback
+--------
 
+Please raise bugs, request features and ask questions at `github.com/cariad/differently/issues <https://github.com/cariad/differently/issues>`_.
 
+Mention if you're a `sponsor <https://github.com/sponsors/cariad>`_ and I'll respond as a priority. Thank you!
 
-# ## Feedback
+Project
+-------
 
-# Please raise bugs, request features and ask questions at [github.com/cariad/differently/issues](https://github.com/cariad/differently/issues).
+The source for *8differently** is available at `github.com/cariad/differently <https://github.com/cariad/differently>`_ under the MIT licence.
 
-# Mention if you're a [sponsor](https://github.com/sponsors/cariad) to ensure I respond as a priority. Thank you!
-
-# ## Project
-
-# The source for `differently` is available at [github.com/cariad/differently](https://github.com/cariad/differently) under the MIT licence.
-
-# And, **hello!** I'm [Cariad Eccleston](https://cariad.io) and I'm an independent/freelance software engineer. If my work has value to you, please consider [sponsoring](https://github.com/sponsors/cariad/).
-
-
+And, **hello!** I'm `Cariad Eccleston <https://cariad.io>`_and I'm an independent/freelance software engineer. If my work has value to you, please consider `sponsoring <https://github.com/sponsors/cariad>`_ me.
 
 Indices and tables
 ==================

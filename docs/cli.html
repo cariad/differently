@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python usage" href="api/index.html" /><link rel="prev" title="differently" href="index.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
-        <title>CLI Usage - differently documentation</title>
+        <title>CLI usage - differently documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -156,7 +156,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">CLI Usage</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">CLI usage</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">Python usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/deserialization.html"><cite>deserialization</cite></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/string_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
@@ -186,14 +186,17 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="cli-usage">
-<h1>CLI Usage<a class="headerlink" href="#cli-usage" title="Permalink to this headline">¶</a></h1>
+<h1>CLI usage<a class="headerlink" href="#cli-usage" title="Permalink to this headline">¶</a></h1>
+<section id="plain-text-comparison">
+<h2>Plain text comparison<a class="headerlink" href="#plain-text-comparison" title="Permalink to this headline">¶</a></h2>
+<p>By default, <strong>differently</strong> will perform a plain text comparison between any two files:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>differently examples/1.md examples/2.md
 </pre></div>
 </div>
@@ -220,6 +223,118 @@ should be added in the diff because it's in 2.md:      =  should be added in the
                                                        &gt;  Hello from 2.md.
 </pre></div>
 </div>
+</section>
+<section id="style">
+<h2>Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h2>
+<p><strong>differently</strong> will guess whether to emit style codes. When she does:</p>
+<ul class="simple">
+<li><p><strong>green</strong> indicates no change</p></li>
+<li><p><strong>yellow</strong> indicates change</p></li>
+<li><p><strong>red</strong> indicates deletion</p></li>
+</ul>
+<p>To force style codes to be emitted, pass <code class="docutils literal notranslate"><span class="pre">--color</span></code>.</p>
+<p>Regardless of whether or not colour is emitted, the symbols in the visualisation indicate:</p>
+<ul class="simple">
+<li><p><strong>=</strong> no change</p></li>
+<li><p><strong>&gt;</strong> inserted line</p></li>
+<li><p><strong>~</strong> modified line</p></li>
+<li><p><strong>x</strong> deleted line</p></li>
+</ul>
+</section>
+<section id="data-comparison">
+<h2>Data comparison<a class="headerlink" href="#data-comparison" title="Permalink to this headline">¶</a></h2>
+<p><strong>differently</strong> can also compare the data described by JSON and YAML files.</p>
+<section id="comparing-the-same-type">
+<h3>Comparing the same type<a class="headerlink" href="#comparing-the-same-type" title="Permalink to this headline">¶</a></h3>
+<p>To perform a data comparison, specify the file type via the <code class="docutils literal notranslate"><span class="pre">--in-format</span></code> argument:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>differently examples/1.json examples/2.json --in-format json
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{                                          =  {
+  "array_of_dictionaries": [               =    "array_of_dictionaries": [
+    {                                      =      {
+      "name": "Bobby Pringles",            ~        "name": "Bobby Salami",
+      "occupation": "Fire Starter"         ~        "occupation": "Fire Fighter"
+    },                                     =      },
+    {                                      =      {
+      "name": "Susan Cheddar",             =        "name": "Susan Cheddar",
+      "occupation": "Transporter Chief"    =        "occupation": "Transporter Chief"
+    },                                     =      },
+    {                                      =      {
+      "name": "Jade Rat",                  =        "name": "Jade Rat",
+      "occupation": "Lightning Conductor"  ~        "occupation": "Lightning Chaser"
+    }                                      =      }
+  ],                                       =    ],
+  "array_of_strings": [                    =    "array_of_strings": [
+    "This is the first line.",             =      "This is the first line.",
+    "This is the second line.",            =      "This is the second line.",
+                                           &gt;      "This is the second-point-five line.",
+    "This is the third line."              =      "This is the third line."
+  ],                                       =    ],
+  "dictionary": {                          =    "dictionary": {
+                                           &gt;      "flavour": "Cheese and Onion",
+    "greeting": "Hello",                   =      "greeting": "Hello",
+    "sound": "Fire Truck",                 x
+    "username": "operator"                 ~      "username": "root"
+  }                                        =    }
+}                                          =  }
+</pre></div>
+</div>
+</section>
+<section id="comparing-the-same-type-but-visualising-as-another">
+<h3>Comparing the same type but visualising as another<a class="headerlink" href="#comparing-the-same-type-but-visualising-as-another" title="Permalink to this headline">¶</a></h3>
+<p>Regardless of the type of the data you’re comparing, you can visualise as another by adding the <cite>–out-format</cite> argument.</p>
+<p>For example, to compare two JSON files but emit the visualisation as YAML:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>differently examples/1.json examples/2.json --in-format json --out-format yaml
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array_of_dictionaries:             =  array_of_dictionaries:
+- name: Bobby Pringles             ~  - name: Bobby Salami
+  occupation: Fire Starter         ~    occupation: Fire Fighter
+- name: Susan Cheddar              =  - name: Susan Cheddar
+  occupation: Transporter Chief    =    occupation: Transporter Chief
+- name: Jade Rat                   =  - name: Jade Rat
+  occupation: Lightning Conductor  ~    occupation: Lightning Chaser
+array_of_strings:                  =  array_of_strings:
+- This is the first line.          =  - This is the first line.
+- This is the second line.         =  - This is the second line.
+                                   &gt;  - This is the second-point-five line.
+- This is the third line.          =  - This is the third line.
+dictionary:                        =  dictionary:
+                                   &gt;    flavour: Cheese and Onion
+  greeting: Hello                  =    greeting: Hello
+  sound: Fire Truck                x
+  username: operator               ~    username: root
+</pre></div>
+</div>
+</section>
+<section id="comparing-across-types">
+<h3>Comparing across types<a class="headerlink" href="#comparing-across-types" title="Permalink to this headline">¶</a></h3>
+<p>Finally, <strong>differently</strong> allows you to compare data between JSON and YAML by specifying the file types comma-separated to <code class="docutils literal notranslate"><span class="pre">--in-format</span></code>. You <em>must</em> specify an <code class="docutils literal notranslate"><span class="pre">--out-format</span></code> in this case.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>differently examples/1.json examples/2.yml --in-format json,yaml --out-format yaml
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array_of_dictionaries:             =  array_of_dictionaries:
+- name: Bobby Pringles             ~  - name: Bobby Salami
+  occupation: Fire Starter         ~    occupation: Fire Fighter
+- name: Susan Cheddar              =  - name: Susan Cheddar
+  occupation: Transporter Chief    =    occupation: Transporter Chief
+- name: Jade Rat                   =  - name: Jade Rat
+  occupation: Lightning Conductor  ~    occupation: Lightning Chaser
+array_of_strings:                  =  array_of_strings:
+- This is the first line.          =  - This is the first line.
+- This is the second line.         =  - This is the second line.
+                                   &gt;  - This is the second-point-five line.
+- This is the third line.          =  - This is the third line.
+dictionary:                        =  dictionary:
+                                   &gt;    flavour: Cheese and Onion
+  greeting: Hello                  =    greeting: Hello
+  sound: Fire Truck                x
+  username: operator               ~    username: root
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
         </article>
@@ -263,8 +378,34 @@ should be added in the diff because it's in 2.md:      =  should be added in the
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">CLI usage</a><ul>
+<li><a class="reference internal" href="#plain-text-comparison">Plain text comparison</a></li>
+<li><a class="reference internal" href="#style">Style</a></li>
+<li><a class="reference internal" href="#data-comparison">Data comparison</a><ul>
+<li><a class="reference internal" href="#comparing-the-same-type">Comparing the same type</a></li>
+<li><a class="reference internal" href="#comparing-the-same-type-but-visualising-as-another">Comparing the same type but visualising as another</a></li>
+<li><a class="reference internal" href="#comparing-across-types">Comparing across types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
