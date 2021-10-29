@@ -46,7 +46,7 @@ should be added in the diff because it's in 2.md:      =  should be added in the
 
 <!--dinject range=end-->
 
-`differently` also supports JSON and YAML comparisons and Python usage. Read the full documentation at [differently.readthedocs.io](https://differently.readthedocs.io).
+`differently` also supports JSON and YAML comparisons and Python usage. Read the full documentation at [cariad.github.io/differently](https://cariad.github.io/differently).
 
 ## 👋 Hello!
 
