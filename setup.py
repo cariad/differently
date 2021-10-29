@@ -37,7 +37,7 @@ setup(
     author="Cariad Eccleston",
     author_email="cariad@cariad.earth",
     classifiers=classifiers,
-    description="Compares files and data",
+    description="CLI tool and package for visualising the differences between things",
     entry_points={
         "console_scripts": [
             "differently=differently.__main__:cli_entry",
@@ -54,14 +54,10 @@ setup(
     name="differently",
     packages=[
         "differently",
-        "differently.exceptions",
-        "differently.handlers",
         "differently.version",
     ],
     package_data={
         "differently": ["py.typed"],
-        "differently.exceptions": ["py.typed"],
-        "differently.handlers": ["py.typed"],
         "differently.version": ["py.typed"],
     },
     python_requires=">=3.8",

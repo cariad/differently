@@ -3,5 +3,7 @@ __pycache__
 coverage.xml
 differently.egg-info
 dist
+docs/_sources
+docs/_static
 docsrc/build
 htmlcov
