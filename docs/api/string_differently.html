@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="ListDifferently" href="list_differently.html" /><link rel="prev" title="Python usage" href="index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="ListDifferently" href="list_differently.html" /><link rel="prev" title="deserialization" href="deserialization.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
-        <title>StringDifferently - differently -1.-1.-1 documentation</title>
+        <title>StringDifferently - differently documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,8 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">differently -1.-1.-1
- documentation</div></a>
+      <a href="../index.html"><div class="brand">differently  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,8 +146,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">differently -1.-1.-1
- documentation</span>
+  <span class="sidebar-brand-text">differently  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -160,8 +158,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">CLI Usage</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Python usage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="deserialization.html"><cite>deserialization</cite></a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="list_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="json_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yaml_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -196,7 +198,7 @@
 <dt class="sig sig-object py" id="differently.StringDifferently">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">differently.</span></span><span class="sig-name descname"><span class="pre">StringDifferently</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#differently.StringDifferently" title="Permalink to this definition">¶</a></dt>
 <dd><p>Visualises the differences between two strings.</p>
-<p>Call <cite>str(…)</cite> or <a class="reference internal" href="#differently.StringDifferently.render" title="differently.StringDifferently.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render()</span></code></a> to render.</p>
+<p>Use the string representation or <a class="reference internal" href="#differently.StringDifferently.render" title="differently.StringDifferently.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render()</span></code></a> to render.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -209,84 +211,31 @@
 <p class="rubric">Example</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">StringDifferently</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"worst of times"</span><span class="p">,</span> <span class="s2">"worst of times"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"borst of times"</span><span class="p">,</span> <span class="s2">"worst of times"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">"worst of times"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"borst of times"</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span>
+    <span class="s2">"borst of times"</span><span class="p">,</span>
+    <span class="s2">"worst of times"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>worst of times  =  worst of times
-borst of times  ~  worst of times
-  &gt;  worst of times
-borst of times  x
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>borst of times  ~  worst of times
 </pre></div>
 </div>
 <dl class="py property">
 <dt class="sig sig-object py" id="differently.StringDifferently.a">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">a</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#differently.StringDifferently.a" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the first string.</p>
-<p class="rubric">Example</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">StringDifferently</span>
-
-<span class="n">diff</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span>
-    <span class="s2">"It was the blorst of times."</span><span class="p">,</span>
-    <span class="s2">"It was the worst of times."</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>It was the blorst of times.
-</pre></div>
-</div>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="differently.StringDifferently.arrow">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arrow</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#differently.StringDifferently.arrow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the arrow character that describes the difference.</p>
-<p class="rubric">Example</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">StringDifferently</span>
-
-<span class="n">equal</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"0"</span><span class="p">,</span> <span class="s2">"0"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">equal</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">equal</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">equal</span><span class="o">.</span><span class="n">arrow</span><span class="p">)</span>
-
-<span class="n">replace</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"0"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">replace</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">replace</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">replace</span><span class="o">.</span><span class="n">arrow</span><span class="p">)</span>
-
-<span class="n">insert</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">insert</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">insert</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">insert</span><span class="o">.</span><span class="n">arrow</span><span class="p">)</span>
-
-<span class="n">delete</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"0"</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">delete</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">delete</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">delete</span><span class="o">.</span><span class="n">arrow</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>0 0 =
-0 1 ~
-None 1 &gt;
-0 None x
-</pre></div>
-</div>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="differently.StringDifferently.b">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">b</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#differently.StringDifferently.b" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the second string.</p>
-<p class="rubric">Example</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">StringDifferently</span>
-
-<span class="n">diff</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span>
-    <span class="s2">"It was the blorst of times."</span><span class="p">,</span>
-    <span class="s2">"It was the worst of times."</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>It was the worst of times.
-</pre></div>
-</div>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="differently.StringDifferently.render">
@@ -305,39 +254,24 @@ None 1 &gt;
 <span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">StringDifferently</span>
 
 <span class="n">diff</span> <span class="o">=</span> <span class="n">StringDifferently</span><span class="p">(</span>
-    <span class="s2">"It was the blorst of times."</span><span class="p">,</span>
+    <span class="s2">"It was the burst of times."</span><span class="p">,</span>
     <span class="s2">"It was the worst of times."</span><span class="p">,</span>
     <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">writer</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
-<span class="n">diff</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">lhs_width</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+<span class="n">diff</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">lhs_width</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>It was the blorst of times.  ~  It was the worst of times.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>It was the burst of times.  ~  It was the worst of times.
 </pre></div>
 </div>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="differently.StringDifferently.type">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> <span class="pre">differently.change_type.DifferenceType</span></em><a class="headerlink" href="#differently.StringDifferently.type" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> <span class="pre">differently.difference_type.DifferenceType</span></em><a class="headerlink" href="#differently.StringDifferently.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the type of the difference.</p>
-<p class="rubric">Example</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">StringDifferently</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"worst of times"</span><span class="p">,</span> <span class="s2">"worst of times"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"borst of times"</span><span class="p">,</span> <span class="s2">"worst of times"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">"worst of times"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">StringDifferently</span><span class="p">(</span><span class="s2">"borst of times"</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>DifferenceType.NONE
-DifferenceType.REPLACEMENT
-DifferenceType.INSERTION
-DifferenceType.DELETION
-</pre></div>
-</div>
 </dd></dl>
 </dd></dl>
 </section>
@@ -356,14 +290,14 @@ DifferenceType.DELETION
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="deserialization.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Python usage</div>
+                <div class="title"><cite>deserialization</cite></div>
                 
               </div>
             </a>

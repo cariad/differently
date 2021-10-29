@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python usage" href="api/index.html" /><link rel="prev" title="differently" href="index.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
-        <title>CLI Usage - differently -1.-1.-1 documentation</title>
+        <title>CLI Usage - differently documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,8 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">differently -1.-1.-1
- documentation</div></a>
+      <a href="index.html"><div class="brand">differently  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,8 +146,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">differently -1.-1.-1
- documentation</span>
+  <span class="sidebar-brand-text">differently  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -160,8 +158,12 @@
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">CLI Usage</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">Python usage</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/deserialization.html"><cite>deserialization</cite></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/string_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/list_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/text_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/json_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/yaml_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -192,7 +194,32 @@
         <article role="main">
           <section id="cli-usage">
 <h1>CLI Usage<a class="headerlink" href="#cli-usage" title="Permalink to this headline">¶</a></h1>
-<p>fooddd</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>differently examples/1.md examples/2.md
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># "differently" example file                           =  # "differently" example file
+                                                       =
+To run this example, install `differently` then run:   =  To run this example, install `differently` then run:
+                                                       =
+```bash                                                =  ```bash
+differently 1.md 2.md                                  =  differently 1.md 2.md
+```                                                    =  ```
+                                                       =
+This line says "foo" in 1.md.                          ~  This line says "bar" in 2.md.
+                                                       =
+Now, a deletion:                                       =  Now, a deletion:
+                                                       x
+Hello from 1.md.                                       x
+                                                       =
+The line above should appear in 1.md but deleted in    =  The line above should appear in 1.md but deleted in
+the diff because it's not in 2.md.                     =  the diff because it's not in 2.md.
+                                                       =
+And finally, this next line doesn't exist in 1.md but  =  And finally, this next line doesn't exist in 1.md but
+should be added in the diff because it's in 2.md:      =  should be added in the diff because it's in 2.md:
+                                                       &gt;
+                                                       &gt;  Hello from 2.md.
+</pre></div>
+</div>
 </section>
 
         </article>
