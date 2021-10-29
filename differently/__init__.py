@@ -1,85 +1,67 @@
-"""
-**differently** is a CLI tool and Python package for visualising the differences between things.
-"""
+from pathlib import Path
+from typing import IO, Any, Callable, Dict, List, Type
 
-
-# ## CLI usage
-
-# ```bash
-# differently examples/1.md examples/2.md
-# ```
-
-# ```text
-# # "differently" example file                           =  # "differently" example file
-#                                                        =
-# To run this example, install `differently` then run:   =  To run this example, install `differently` then run:
-#                                                        =
-# ```bash                                                =  ```bash
-# differently 1.md 2.md                                  =  differently 1.md 2.md
-# ```                                                    =  ```
-#                                                        =
-# This line says "foo" in 1.md.                          ~  This line says "bar" in 2.md.
-#                                                        =
-# Now, a deletion:                                       =  Now, a deletion:
-#                                                        x
-# Hello from 1.md.                                       x
-#                                                        =
-# The line above should appear in 1.md but deleted in    =  The line above should appear in 1.md but deleted in
-# the diff because it's not in 2.md.                     =  the diff because it's not in 2.md.
-#                                                        =
-# And finally, this next line doesn't exist in 1.md but  =  And finally, this next line doesn't exist in 1.md but
-# should be added in the diff because it's in 2.md:      =  should be added in the diff because it's in 2.md:
-#                                                        >
-#                                                        >  Hello from 2.md.
-
-# ```
-
-# ## Python usage
-
-# TODO
-
-# ## Installation
-
-# **differently** requires Python 3.8 or later.
-
-# ```bash
-# pip install differently
-# ```
-
-# ## Feedback
-
-# Please raise bugs, request features and ask questions at [github.com/cariad/differently/issues](https://github.com/cariad/differently/issues).
-
-# Mention if you're a [sponsor](https://github.com/sponsors/cariad) to ensure I respond as a priority. Thank you!
-
-# ## Project
-
-# The source for `differently` is available at [github.com/cariad/differently](https://github.com/cariad/differently) under the MIT licence.
-
-# And, **hello!** I'm [Cariad Eccleston](https://cariad.io) and I'm an independent/freelance software engineer. If my work has value to you, please consider [sponsoring](https://github.com/sponsors/cariad/).
-
-
-# from differently.version import get_version
-from differently.change_type import DifferenceType
-
-# from differently.change_calculator import ChangeCalculator
-from differently.handlers import (
-    JsonDifferently,
-    ListDifferently,
-    TextDifferently,
-    YamlDifferently,
-    render,
-)
+from differently.deserialization import deserialize_value
+from differently.difference_type import DifferenceType
+from differently.json_differently import JsonDifferently
+from differently.list_differently import ListDifferently
 from differently.string_differently import StringDifferently
+from differently.text_differently import TextDifferently
+from differently.yaml_differently import YamlDifferently
 
-# from differently.change import Change
-# from differently import handlers
+TLoader = Callable[[Path], Any]
+
+loaders: Dict[str, TLoader] = {
+    "json": JsonDifferently.load,
+    "text": TextDifferently.load,
+    "yaml": YamlDifferently.load,
+}
+
+renderers: Dict[str, Type[ListDifferently]] = {
+    "json": JsonDifferently,
+    "text": TextDifferently,
+    "yaml": YamlDifferently,
+}
+
+
+def deserialize(keys: str, index: int, path: Path) -> Any:
+    """
+    Deserialises the file at `path` using the deserialiser described at `index`
+    of the comma-separated `keys`.
+    """
+    key = keys.split(",")[index] if "," in keys else keys
+    return loaders[key](Path(path))
+
+
+def get_deserializer_keys() -> List[str]:
+    """Gets the keys of all available deserialisers."""
+    return [key for key in loaders]
+
+
+def get_renderer(key: str) -> Type[ListDifferently]:
+    """Gets a renderer."""
+    return renderers[key]
+
+
+def get_renderer_keys() -> List[str]:
+    """Gets the keys of all available renderers."""
+    return [key for key in renderers]
+
+
+def render(a: str, b: str, writer: IO[str]) -> None:
+    """
+    Renders the differences between `a` and `b` to `writer`.
+
+    Treats the inputs as marked-up data if possible.
+    """
+
+    _, da = deserialize_value(a)
+    t, db = deserialize_value(b)
+    writer.write(str(t(da, db)))
+
 
 __all__ = [
-    #     "Change",
-    #     "ChangeCalculator",
     "DifferenceType",
-    #     "get_version",
     "JsonDifferently",
     "ListDifferently",
     "render",

@@ -3,7 +3,8 @@ from io import StringIO
 from logging import getLogger
 from typing import IO, List, Optional
 
-from differently.change_type import DifferenceType
+from differently.difference_type import DifferenceType
+from differently.exceptions import DifferentlyError
 from differently.string_differently import StringDifferently
 
 
@@ -11,7 +12,7 @@ class ListDifferently:
     """
     Visualises the differences between two lists of strings.
 
-    Call `str(...)` or :meth:`.render` to render.
+    Use the string representation or :meth:`.render` to render.
 
     Arguments:
         a:     First list
@@ -26,7 +27,7 @@ class ListDifferently:
             diff = ListDifferently(
                 [
                     "It was the best of times,",
-                    "It was the blorst of times.",
+                    "It was the burst of times.",
                 ],
                 [
                     "It was the best of times,",
@@ -41,9 +42,9 @@ class ListDifferently:
     .. testoutput::
         :options: +NORMALIZE_WHITESPACE
 
-        It was the best of times,    =  It was the best of times,
-        It was the blorst of times.  ~  It was the worst of times.
-                                     >  It was the age of wisdom...
+        It was the best of times,   =  It was the best of times,
+        It was the burst of times.  ~  It was the worst of times.
+                                    >  It was the age of wisdom...
     """
 
     def __init__(
@@ -82,7 +83,7 @@ class ListDifferently:
             return DifferenceType.DELETION
         if line[0] == "?":
             return DifferenceType.REPLACEMENT
-        raise ValueError(f'unrecognised change type "{line[0]}" in "{line}"')
+        raise DifferentlyError(f'unrecognised change type "{line[0]}" in "{line}"')
 
     def _get_text_at(self, index: int) -> Optional[str]:
         try:
@@ -97,28 +98,6 @@ class ListDifferently:
         """
         Gets the :class:`.StringDifferently` that make up the differences
         between the lists.
-
-        Example:
-            .. testcode::
-
-                from differently import ListDifferently
-
-                diff = ListDifferently(
-                    ["first", "seccond"],
-                    ["first", "second", "third"],
-                    color=False,
-                )
-
-                for index, change in enumerate(diff.differences):
-                    print(index, change)
-
-
-        .. testoutput::
-            :options: +NORMALIZE_WHITESPACE
-
-            0 first  =  first
-            1 seccond  ~  second
-            2   >  third
         """
 
         if not self._changes:
@@ -208,14 +187,12 @@ class ListDifferently:
 
             first    =  first
             seccond  ~  second
-                    >  third
+                     >  third
         """
-
-        if not self.differences:
-            return
 
         longest_a = max([len(ch.a or "") for ch in self.differences])
 
-        for change in self.differences:
+        for index, change in enumerate(self.differences):
+            if index > 0:
+                writer.write("\n")
             change.render(lhs_width=longest_a, writer=writer)
-            writer.write("\n")
