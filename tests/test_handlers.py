@@ -3,7 +3,7 @@ from typing import Any, Type
 
 from pytest import mark
 
-from differently.handlers import (
+from differently import (
     JsonDifferently,
     ListDifferently,
     TextDifferently,
