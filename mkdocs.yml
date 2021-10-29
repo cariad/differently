@@ -1,7 +1,0 @@
-nav:
-  - index.md
-  - cli.md
-  - python.md
-site_name: differently
-theme:
-  name: readthedocs
