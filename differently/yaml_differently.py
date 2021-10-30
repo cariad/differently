@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Any, List, Union
+from typing import Any, List, Optional, Union
 
 from yaml import safe_dump, safe_load
 
@@ -61,8 +61,8 @@ class YamlDifferently(ListDifferently):
 
     def __init__(
         self,
-        a: Any,
-        b: Any,
+        a: Optional[Any],
+        b: Optional[Any],
         color: bool = True,
     ) -> None:
         super().__init__(
@@ -90,5 +90,7 @@ class YamlDifferently(ListDifferently):
             raise DeserializationError(ex)
 
     @staticmethod
-    def to_strings(d: Any) -> List[str]:
+    def to_strings(d: Optional[Any]) -> Optional[List[str]]:
+        if d is None:
+            return None
         return str(safe_dump(d, sort_keys=True)).splitlines()

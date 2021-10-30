@@ -1,6 +1,6 @@
 from json import dumps, load, loads
 from pathlib import Path
-from typing import IO, Any, List, Union
+from typing import IO, Any, List, Optional, Union
 
 from differently.exceptions import DeserializationError
 from differently.list_differently import ListDifferently
@@ -55,8 +55,8 @@ class JsonDifferently(ListDifferently):
 
     def __init__(
         self,
-        a: Any,
-        b: Any,
+        a: Optional[Any],
+        b: Optional[Any],
         color: bool = True,
     ) -> None:
         super().__init__(
@@ -139,5 +139,7 @@ class JsonDifferently(ListDifferently):
         super().render(writer=writer)
 
     @staticmethod
-    def to_strings(d: Any) -> List[str]:
+    def to_strings(d: Optional[Any]) -> Optional[List[str]]:
+        if d is None:
+            return None
         return str(dumps(d, indent=2, sort_keys=True)).splitlines()

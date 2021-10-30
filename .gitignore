@@ -1,5 +1,6 @@
 __pycache__
 .coverage
+actual-json.txt
 coverage.xml
 differently.egg-info
 dist

@@ -11,6 +11,7 @@ from differently.yaml_differently import YamlDifferently
 @mark.parametrize(
     "v, expect",
     [
+        (None, (None, None)),
         ("foo: bar", (YamlDifferently, {"foo": "bar"})),
         ('{"foo": "bar"}', (JsonDifferently, {"foo": "bar"})),
     ],

@@ -55,9 +55,16 @@ def render(a: str, b: str, writer: IO[str]) -> None:
     Treats the inputs as marked-up data if possible.
     """
 
-    _, da = deserialize_value(a)
-    t, db = deserialize_value(b)
-    writer.write(str(t(da, db)))
+    ta, da = deserialize_value(a)
+    tb, db = deserialize_value(b)
+
+    tv = ta or tb
+
+    if not tv:
+        # No changes to render:
+        return
+
+    writer.write(str(tv(da, db)))
 
 
 __all__ = [
