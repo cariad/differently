@@ -22,11 +22,11 @@ jobs:
           key: pipenv-3100-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - .venv
-      - run: pipenv run ./lint.sh
-      - run: pipenv run pytest
+      - run: pipenv run ./build.sh
       - codecov/upload:
           file: coverage.xml
-      - run: pipenv run ./build.sh
+      - run: pip install dist/*
+      - run: ./test-cli.sh
       - run: if [[ -z "${CIRCLE_TAG}" ]]; then circleci-agent step halt; fi
       - run: pipenv run twine upload dist/*
 

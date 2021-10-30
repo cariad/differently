@@ -23,9 +23,6 @@ project = "differently"
 copyright = "2021, Cariad Eccleston"
 author = "Cariad Eccleston"
 
-with open("../../differently/version/VERSION", "r") as f:
-    release = f.read()
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -38,11 +35,12 @@ extensions = [
     "sphinx.ext.napoleon",
 ]
 
-autosummary_generate = True
-napoleon_use_param = False
+autodoc_default_flags = ["members", "inherited-members"]
+# autosummary_generate = True
+# napoleon_use_param = False
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
+# templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -60,4 +58,4 @@ html_theme = "furo"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+# html_static_path = ["_static"]

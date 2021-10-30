@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="TextDifferently" href="text_differently.html" /><link rel="prev" title="StringDifferently" href="string_differently.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="YamlDifferently" href="yaml_differently.html" /><link rel="prev" title="TextDifferently" href="text_differently.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
-        <title>ListDifferently - differently documentation</title>
+        <title>JsonDifferently - differently documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -160,9 +160,9 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Python usage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="deserialization.html"><cite>deserialization</cite></a></li>
 <li class="toctree-l2"><a class="reference internal" href="string_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="text_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="json_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code></a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="yaml_differently.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></a></li>
 </ul>
 </li>
@@ -192,55 +192,74 @@
           </label>
         </div>
         <article role="main">
-          <section id="listdifferently">
-<h1><code class="xref py py-class docutils literal notranslate"><span class="pre">ListDifferently</span></code><a class="headerlink" href="#listdifferently" title="Permalink to this headline">¶</a></h1>
+          <section id="jsondifferently">
+<h1><code class="xref py py-class docutils literal notranslate"><span class="pre">JsonDifferently</span></code><a class="headerlink" href="#jsondifferently" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="differently.ListDifferently">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">differently.</span></span><span class="sig-name descname"><span class="pre">ListDifferently</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#differently.ListDifferently" title="Permalink to this definition">¶</a></dt>
-<dd><p>Visualises the differences between two lists of strings.</p>
-<p>Use the string representation or <a class="reference internal" href="#differently.ListDifferently.render" title="differently.ListDifferently.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render()</span></code></a> to render.</p>
+<dt class="sig sig-object py" id="differently.JsonDifferently">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">differently.</span></span><span class="sig-name descname"><span class="pre">JsonDifferently</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#differently.JsonDifferently" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualises the differences between two objects as JSON.</p>
+<p>Use the string representation or <a class="reference internal" href="#differently.JsonDifferently.render" title="differently.JsonDifferently.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render()</span></code></a> to render.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>a</strong> – First list</p></li>
-<li><p><strong>b</strong> – Second list</p></li>
+<li><p><strong>a</strong> – First object</p></li>
+<li><p><strong>b</strong> – Second object</p></li>
 <li><p><strong>color</strong> – Include or exclude colour formatting (default is <cite>True</cite>)</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">ListDifferently</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">JsonDifferently</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">TypedDict</span>
 
-<span class="n">diff</span> <span class="o">=</span> <span class="n">ListDifferently</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="s2">"It was the best of times,"</span><span class="p">,</span>
-        <span class="s2">"It was the burst of times."</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="p">[</span>
-        <span class="s2">"It was the best of times,"</span><span class="p">,</span>
-        <span class="s2">"It was the worst of times."</span><span class="p">,</span>
-        <span class="s2">"It was the age of wisdom..."</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="k">class</span> <span class="nc">PersonDict</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">movies</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
+<span class="n">a</span><span class="p">:</span> <span class="n">PersonDict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Bobby Pringles"</span><span class="p">,</span>
+    <span class="s2">"movies"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Fire Everywhere"</span><span class="p">,</span> <span class="s2">"The World Is Exploding"</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">b</span><span class="p">:</span> <span class="n">PersonDict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Susan Cheddar"</span><span class="p">,</span>
+    <span class="s2">"movies"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"The World Is Exploding"</span><span class="p">,</span> <span class="s2">"Watch Out For The Moon"</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">diff</span> <span class="o">=</span> <span class="n">JsonDifferently</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>It was the best of times,   =  It was the best of times,
-It was the burst of times.  ~  It was the worst of times.
-                            &gt;  It was the age of wisdom...
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{                                 =  {
+    "movies": [                   =    "movies": [
+        "Fire Everywhere",        x
+        "The World Is Exploding"  ~      "The World Is Exploding",
+                                  &gt;      "Watch Out For The Moon"
+    ],                            =    ],
+    "name": "Bobby Pringles"      ~    "name": "Susan Cheddar"
+}                                 =  }
 </pre></div>
 </div>
-<dl class="py property">
-<dt class="sig sig-object py" id="differently.ListDifferently.differences">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">differences</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="string_differently.html#differently.StringDifferently" title="differently.string_differently.StringDifferently"><span class="pre">differently.string_differently.StringDifferently</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#differently.ListDifferently.differences" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the <a class="reference internal" href="string_differently.html#differently.StringDifferently" title="differently.StringDifferently"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></a> that make up the differences
-between the lists.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="differently.JsonDifferently.load">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#differently.JsonDifferently.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialises JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> – If <cite>i</cite> is a <cite>Path</cite> then deserialises the file, If <cite>i</cite> is a <cite>str</cite>
+then deserialises <cite>i</cite>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Deserialised object</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>DeserializationError</strong> – raised if deserialisation fails</p>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="differently.ListDifferently.render">
-<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">writer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#differently.ListDifferently.render" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="differently.JsonDifferently.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">writer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#differently.JsonDifferently.render" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the visualisation to <cite>writer</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -248,23 +267,39 @@ between the lists.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">ListDifferently</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">differently</span> <span class="kn">import</span> <span class="n">JsonDifferently</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">TypedDict</span>
 
-<span class="n">diff</span> <span class="o">=</span> <span class="n">ListDifferently</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"seccond"</span><span class="p">],</span>
-    <span class="p">[</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"second"</span><span class="p">,</span> <span class="s2">"third"</span><span class="p">],</span>
-    <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="k">class</span> <span class="nc">PersonDict</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">movies</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+<span class="n">a</span><span class="p">:</span> <span class="n">PersonDict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Bobby Pringles"</span><span class="p">,</span>
+    <span class="s2">"movies"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Fire Everywhere"</span><span class="p">,</span> <span class="s2">"The World Is Exploding"</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">b</span><span class="p">:</span> <span class="n">PersonDict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Susan Cheddar"</span><span class="p">,</span>
+    <span class="s2">"movies"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"The World Is Exploding"</span><span class="p">,</span> <span class="s2">"Watch Out For The Moon"</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">diff</span> <span class="o">=</span> <span class="n">JsonDifferently</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">writer</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 <span class="n">diff</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>first    =  first
-seccond  ~  second
-         &gt;  third
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{                                 =  {
+    "movies": [                   =    "movies": [
+        "Fire Everywhere",        x
+        "The World Is Exploding"  ~      "The World Is Exploding",
+                                &gt;      "Watch Out For The Moon"
+    ],                            =    ],
+    "name": "Bobby Pringles"      ~    "name": "Susan Cheddar"
+}                                 =  }
 </pre></div>
 </div>
 </dd></dl>
@@ -276,23 +311,23 @@ seccond  ~  second
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="text_differently.html">
+          <a class="next-page" href="yaml_differently.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></div>
+                <div class="title"><code class="xref py py-class docutils literal notranslate"><span class="pre">YamlDifferently</span></code></div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="string_differently.html">
+          <a class="prev-page" href="text_differently.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringDifferently</span></code></div>
+                <div class="title"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextDifferently</span></code></div>
                 
               </div>
             </a>
@@ -304,7 +339,7 @@ seccond  ~  second
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
-            <a class="muted-link" href="../_sources/api/list_differently.rst.txt"
+            <a class="muted-link" href="../_sources/api/json_differently.rst.txt"
                rel="nofollow">
               Show Source
             </a>

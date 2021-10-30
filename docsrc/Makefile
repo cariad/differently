@@ -10,8 +10,8 @@ BUILDDIR      = build
 
 default:
 	@rm -rf build
-	@make doctest
-	@make html
+	@make doctest SPHINXOPTS="-W"
+	@make html    SPHINXOPTS="-W"
 	@cp -a build/html/. ../docs
 
 help:
