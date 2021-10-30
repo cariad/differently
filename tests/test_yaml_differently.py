@@ -7,14 +7,23 @@ from differently import YamlDifferently
 from differently.exceptions import DeserializationError
 
 
-def test() -> None:
-    diff = YamlDifferently(
-        {"foo": "boo"},
-        {"foo": "woo"},
-        color=True,
-    )
-    expect = "\x1b[33mfoo: boo\x1b[39m  \x1b[33m~\x1b[39m  \x1b[33mfoo: woo\x1b[39m\n"
-    assert str(diff) == expect
+@mark.parametrize(
+    "a, b, expect",
+    [
+        (
+            None,
+            {"foo": "bar"},
+            """  >  foo: bar\n""",
+        ),
+        (
+            {"foo": "bar"},
+            None,
+            "foo: bar  x\n",
+        ),
+    ],
+)
+def test(a: Any, b: Any, expect: str) -> None:
+    assert str(YamlDifferently(a, b, color=False)) == expect
 
 
 @mark.parametrize(

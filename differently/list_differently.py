@@ -4,7 +4,6 @@ from logging import getLogger
 from typing import IO, List, Optional
 
 from differently.difference_type import DifferenceType
-from differently.exceptions import DifferentlyError
 from differently.string_differently import StringDifferently
 
 
@@ -49,12 +48,12 @@ class ListDifferently:
 
     def __init__(
         self,
-        a: List[str],
-        b: List[str],
+        a: Optional[List[str]],
+        b: Optional[List[str]],
         color: bool = True,
     ) -> None:
-        self.a = a
-        self.b = b
+        self.a = a or []
+        self.b = b or []
         self.color = color
         self._changes: List[StringDifferently] = []
         self._diff: List[str] = []
@@ -81,9 +80,7 @@ class ListDifferently:
             return DifferenceType.INSERTION
         if line[0] == "-":
             return DifferenceType.DELETION
-        if line[0] == "?":
-            return DifferenceType.REPLACEMENT
-        raise DifferentlyError(f'unrecognised change type "{line[0]}" in "{line}"')
+        return DifferenceType.REPLACEMENT
 
     def _get_text_at(self, index: int) -> Optional[str]:
         try:

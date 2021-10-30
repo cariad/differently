@@ -8,6 +8,31 @@ from differently.exceptions import DeserializationError
 
 
 @mark.parametrize(
+    "a, b, expect",
+    [
+        (
+            None,
+            {"foo": "bar"},
+            """  >  {
+  >    "foo": "bar"
+  >  }
+""",
+        ),
+        (
+            {"foo": "bar"},
+            None,
+            """{               x
+  "foo": "bar"  x
+}               x
+""",
+        ),
+    ],
+)
+def test(a: Any, b: Any, expect: str) -> None:
+    assert str(JsonDifferently(a, b, color=False)) == expect
+
+
+@mark.parametrize(
     "i, expect",
     [
         (Path() / "tests" / "foo.json", {"foo": "bar"}),

@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import IO, Any, Callable, Dict, List, Type
+from typing import IO, Any, Callable, Dict, List, Optional, Type
 
 from differently.deserialization import deserialize_value
 from differently.difference_type import DifferenceType
@@ -48,16 +48,23 @@ def get_renderer_keys() -> List[str]:
     return [key for key in renderers]
 
 
-def render(a: str, b: str, writer: IO[str]) -> None:
+def render(a: Optional[str], b: Optional[str], writer: IO[str]) -> None:
     """
     Renders the differences between `a` and `b` to `writer`.
 
     Treats the inputs as marked-up data if possible.
     """
 
-    _, da = deserialize_value(a)
-    t, db = deserialize_value(b)
-    writer.write(str(t(da, db)))
+    ta, da = deserialize_value(a)
+    tb, db = deserialize_value(b)
+
+    tv = ta or tb
+
+    if not tv:
+        # No changes to render:
+        return
+
+    writer.write(str(tv(da, db)))
 
 
 __all__ = [
