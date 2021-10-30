@@ -192,7 +192,6 @@ class ListDifferently:
 
         longest_a = max([len(ch.a or "") for ch in self.differences])
 
-        for index, change in enumerate(self.differences):
-            if index > 0:
-                writer.write("\n")
+        for change in self.differences:
             change.render(lhs_width=longest_a, writer=writer)
+            writer.write("\n")

@@ -29,9 +29,9 @@ Mention if you're a `sponsor <https://github.com/sponsors/cariad>`_ and I'll res
 Project
 -------
 
-The source for *8differently** is available at `github.com/cariad/differently <https://github.com/cariad/differently>`_ under the MIT licence.
+The source for **differently** is available at `github.com/cariad/differently <https://github.com/cariad/differently>`_ under the MIT licence.
 
-And, **hello!** I'm `Cariad Eccleston <https://cariad.io>`_and I'm an independent/freelance software engineer. If my work has value to you, please consider `sponsoring <https://github.com/sponsors/cariad>`_ me.
+And, **hello!** I'm `Cariad Eccleston <https://cariad.io>`_ and I'm an independent/freelance software engineer. If my work has value to you, please consider `sponsoring <https://github.com/sponsors/cariad>`_ me.
 
 Indices and tables
 ==================

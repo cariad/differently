@@ -57,5 +57,4 @@ def entry(cli_args: List[str], writer: IO[str]) -> int:
     )
 
     diff.render(writer)
-    writer.write("\n")
     return 0
