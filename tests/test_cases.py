@@ -14,7 +14,7 @@ def test() -> None:
             f.write(actual_json)
 
         with open(Path(directory) / "expect-json.txt", "r") as f:
-            expect = f.read().strip()
+            expect = f.read()
             if actual_json != expect:
                 print("ACTUAL:")
                 print(actual_json)
